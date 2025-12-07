@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Ordonez | AI Infrastructure & Model Operations</title>
+    <meta name="description"
+        content="Technical Program Manager specializing in AI Infrastructure, Model Operations, and Distributed Systems. Portfolio of Gabriel Ordonez.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Icons (boxicons for simplicity) -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar"
+        style="position: fixed; width: 100%; top: 0; z-index: 1000; padding: 1.5rem 0; background: rgba(10, 10, 15, 0.8); backdrop-filter: blur(10px);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="#" style="font-family: var(--font-heading); font-weight: 700; font-size: 1.5rem;">
+                G<span class="text-gradient">O</span>.
+            </a>
+            <div style="display: flex; gap: 2rem;">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact" class="btn btn-outline" style="padding: 0.5rem 1.2rem;">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badges fade-in">
+                    <span class="badge">AI Infrastructure</span>
+                    <span class="badge">Model Operations</span>
+                    <span class="badge">GenAI</span>
+                </div>
+                <h1 class="fade-in delay-100">
+                    Building the Bridge Between <br />
+                    <span class="text-gradient">Research & Production</span>
+                </h1>
+                <p class="fade-in delay-200">
+                    I am Gabriel Ordonez Hernandez. A Technical Program Manager with 15+ years delivering large-scale
+                    distributed systems.
+                    Pivoting from high-availability infrastructure to MLOps and GenAI delivery.
+                </p>
+                <div class="fade-in delay-300" style="display: flex; gap: 1rem;">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="https://linkedin.com/in/gordonez" target="_blank" class="btn btn-outline"><i
+                            class='bx bxl-linkedin'></i> LinkedIn</a>
+                    <a href="https://github.com/gogabrielordonez" target="_blank" class="btn btn-outline"><i
+                            class='bx bxl-github'></i> GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background decorative elements -->
+        <div
+            style="position: absolute; top: 20%; right: 10%; width: 300px; height: 300px; background: var(--primary); filter: blur(150px); opacity: 0.2; border-radius: 50%; z-index: -1;">
+        </div>
+        <div
+            style="position: absolute; bottom: 10%; left: 5%; width: 250px; height: 250px; background: var(--accent); filter: blur(120px); opacity: 0.15; border-radius: 50%; z-index: -1;">
+        </div>
+    </section>
+
+    <!-- Professional Summary -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">Professional <span class="text-gradient">Summary</span></h2>
+            <div class="glass-card fade-in delay-100" style="margin-top: 2rem;">
+                <p style="font-size: 1.1rem; color: #d0d0e0; margin-bottom: 1.5rem;">
+                    Technical Program Manager with 15+ years delivering large-scale distributed systems, with a
+                    decade-long evolution from heuristic automation (2011) to predictive ML (Huawei Global Innovation
+                    Award, 2017) and GenAI.
+                </p>
+                <p style="font-size: 1.1rem; color: #d0d0e0; margin-bottom: 1.5rem;">
+                    Pivoting from high-availability infrastructure to MLOps and GenAI delivery. Expert at bridging the
+                    gap between research concepts and production stability, managing cross-functional teams across 3
+                    continents, and translating between ML engineers and business stakeholders.
+                </p>
+                <p style="font-size: 1.1rem; color: #d0d0e0;">
+                    Thrive in chaotic, fast-paced environments with evolving priorities.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section id="skills" style="background: rgba(255,255,255,0.02);">
+        <div class="container">
+            <h2 class="section-title fade-in">Technical <span class="text-gradient">Skills</span></h2>
+
+            <div class="skills-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+
+                <!-- AI/ML Stack -->
+                <div class="glass-card fade-in delay-100">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent);"><i class='bx bx-brain'></i> AI/ML Stack</h3>
+                    <ul class="skill-list">
+                        <li>LLMs, NLP, RAG Architectures</li>
+                        <li>AWS Bedrock, SageMaker</li>
+                        <li>LangChain</li>
+                        <li>Vector Databases (Pinecone/FAISS)</li>
+                        <li>Python, Prompt Engineering</li>
+                        <li>Model Evaluation Frameworks</li>
+                    </ul>
+                </div>
+
+                <!-- Infrastructure & MLOps -->
+                <div class="glass-card fade-in delay-200">
+                    <h3 style="margin-bottom: 1rem; color: var(--primary);"><i class='bx bx-server'></i> Infrastructure
+                        & MLOps</h3>
+                    <ul class="skill-list">
+                        <li>Cloud-Native Architecture</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Model Serving</li>
+                        <li>Distributed Systems</li>
+                        <li>Containerization (Docker/K8s)</li>
+                    </ul>
+                </div>
+
+                <!-- Program Management -->
+                <div class="glass-card fade-in delay-300">
+                    <h3 style="margin-bottom: 1rem; color: #fff;"><i class='bx bx-briefcase'></i> Program Management
+                    </h3>
+                    <ul class="skill-list">
+                        <li>Cross-functional Coordination</li>
+                        <li>Dependency Mapping</li>
+                        <li>Risk Management</li>
+                        <li>Agile/SAFe</li>
+                        <li>Stakeholder Communication</li>
+                        <li>CapEx/OpEx Budgeting ($30M+)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title fade-in">Professional <span class="text-gradient">Experience</span></h2>
+
+            <div class="timeline fade-in delay-100" style="margin-top: 2rem;">
+
+                <!-- Amdocs -->
+                <div class="timeline-item">
+                    <span class="timeline-date">2023 – Present</span>
+                    <div class="timeline-content glass-card">
+                        <h3>Senior Program Delivery Lead</h3>
+                        <h4>Amdocs | Ottawa, ON</h4>
+                        <ul class="skill-list job-details">
+                            <li>Leading cloud-native transformation and data infrastructure programs for Tier-1 US
+                                telecom operator.</li>
+                            <li><strong>Cross-Functional Execution:</strong> Directing team of 15+ engineers and data
+                                architects across Canada, US, and India to deliver cloud migration initiatives, reducing
+                                data retrieval latency by 20%.</li>
+                            <li><strong>Operational Rigour:</strong> Implemented CI/CD governance and automated testing
+                                gates, increasing deployment frequency from monthly to weekly while reducing change
+                                failure rate by 15%.</li>
+                            <li><strong>Stakeholder Management:</strong> Managing technical roadmap for multi-million
+                                dollar contracts.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Independent Consultant -->
+                <div class="timeline-item">
+                    <span class="timeline-date">2021 – 2023</span>
+                    <div class="timeline-content glass-card">
+                        <h3>Independent Consultant (Technical Programs)</h3>
+                        <h4>Remote</h4>
+                        <ul class="skill-list job-details">
+                            <li>Delivered consulting while completing MBA—bridging technical execution with business
+                                strategy.</li>
+                            <li><strong>AI Advisory:</strong> Consulted on AI implementation for BSS modernization.</li>
+                            <li><strong>Engineering Frameworks:</strong> Designed delivery standards for distributed
+                                software teams.</li>
+                            <li><strong>SAFe Transformation:</strong> Led Scaled Agile adoption across multi-cultural
+                                distributed teams.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- VIVA -->
+                <div class="timeline-item">
+                    <span class="timeline-date">2018 – 2021</span>
+                    <div class="timeline-content glass-card">
+                        <h3>Engineering Manager</h3>
+                        <h4>VIVA Nuevatel PCS de Bolivia | La Paz, Bolivia</h4>
+                        <ul class="skill-list job-details">
+                            <li>Directed engineering transformation for nationwide distributed infrastructure serving
+                                millions of subscribers.</li>
+                            <li>Managed $30M+ CAPEX portfolio across engineering initiatives.</li>
+                            <li>Introduced Agile value-stream frameworks replacing waterfall approaches.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Huawei -->
+                <div class="timeline-item">
+                    <span class="timeline-date">2015 – 2018</span>
+                    <div class="timeline-content glass-card">
+                        <h3>Network Performance Manager (Regional Lead)</h3>
+                        <h4>Huawei Technologies | La Paz, Bolivia</h4>
+                        <p style="margin-bottom: 1rem; color: var(--accent); font-weight: 600;">★ HUAWEI GLOBAL
+                            INNOVATION AWARD (2017)</p>
+                        <ul class="skill-list job-details">
+                            <li>CEO recognition for pioneering machine learning implementation in predictive
+                                infrastructure planning using Prophet.</li>
+                            <li><strong>Data-Driven Optimization:</strong> Led team utilizing statistical analysis on
+                                TB-scale telemetry data to predict capacity constraints.</li>
+                            <li><strong>ML Pipeline Design:</strong> Designed data pipelines and built predictive
+                                models.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nokia/Ericsson/MSI (Grouped for brevity or separate?) -->
+                <!-- I'll group earlier roles into one simplified item to save space, or separate if requested. 
+                     The user CV is detailed. I'll include Nokia and Ericsson. -->
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2013 – 2015</span>
+                    <div class="timeline-content glass-card">
+                        <h3>Senior Technical Project Manager</h3>
+                        <h4>Nokia | La Paz, Bolivia</h4>
+                        <ul class="skill-list job-details">
+                            <li>Managed end-to-end delivery of complex infrastructure integration projects.</li>
+                            <li>Served as primary bridge between technical delivery teams and client executives.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2003 – 2013</span>
+                    <div class="timeline-content glass-card">
+                        <h3>Previous Experience</h3>
+                        <h4>Ericsson | MSI Americas | Telefónica</h4>
+                        <ul class="skill-list job-details">
+                            <li><strong>Solutions Architect & Project Lead (Ericsson):</strong> Deployed automated
+                                optimization solutions (fuzzy logic algorithms) for Telefónica across LatAm.</li>
+                            <li><strong>RF Engineer (MSI/Telefónica):</strong> Built deep technical foundation in
+                                distributed systems engineering.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" style="background: rgba(255,255,255,0.02);">
+        <div class="container">
+            <h2 class="section-title fade-in">Independent <span class="text-gradient">AI Projects</span></h2>
+            <p class="fade-in delay-100" style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 700px;">
+                Hands-on technical development building GenAI systems to stay at the implementation edge.
+            </p>
+
+            <div class="skills-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+
+                <!-- RAG -->
+                <div class="glass-card fade-in delay-200">
+                    <h3 style="margin-bottom: 0.5rem; color: var(--accent);">RAG Implementation</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">Document Intelligence Pipeline</p>
+                    <ul class="skill-list">
+                        <li>Architected Retrieval-Augmented Generation pipelines using <strong>LangChain</strong> and
+                            <strong>AWS Bedrock</strong>.</li>
+                        <li>Achieved 40% reduction in information retrieval time.</li>
+                        <li>Integrated semantic search for enterprise-grade document querying.</li>
+                    </ul>
+                    <div style="margin-top: 1rem;">
+                        <span class="badge">LangChain</span>
+                        <span class="badge">AWS Bedrock</span>
+                    </div>
+                </div>
+
+                <!-- Model Eval -->
+                <div class="glass-card fade-in delay-300">
+                    <h3 style="margin-bottom: 0.5rem; color: var(--accent);">Model Evaluation Framework</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">Benchmarking & Optimization</p>
+                    <ul class="skill-list">
+                        <li>Engineered prompt evaluation frameworks to benchmark LLM performance (Claude vs. GPT-4).
+                        </li>
+                        <li>Optimized token usage costs by 25% through prompt caching and context window optimization.
+                        </li>
+                    </ul>
+                    <div style="margin-top: 1rem;">
+                        <span class="badge">Python</span>
+                        <span class="badge">LLM Benchmarking</span>
+                    </div>
+                </div>
+
+                <!-- Full Stack -->
+                <div class="glass-card fade-in delay-200">
+                    <h3 style="margin-bottom: 0.5rem; color: var(--accent);">Full-Stack GenAI Apps</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">End-to-End Prototyping</p>
+                    <ul class="skill-list">
+                        <li>Built end-to-end applications using <strong>Python/Streamlit</strong>.</li>
+                        <li>Integrated vector databases (Pinecone, FAISS) for high-performance semantic search
+                            capabilities.</li>
+                    </ul>
+                    <div style="margin-top: 1rem;">
+                        <span class="badge">Streamlit</span>
+                        <span class="badge">Pinecone</span>
+                    </div>
+                </div>
+
+                <!-- MCP -->
+                <div class="glass-card fade-in delay-300">
+                    <h3 style="margin-bottom: 0.5rem; color: var(--accent);">MCP Development</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">Model Context Protocol</p>
+                    <ul class="skill-list">
+                        <li>Built Model Context Protocol servers connecting AI assistants to enterprise platforms via
+                            JSON-RPC transport layer.</li>
+                        <li>Enabling secure and standardized context exchange between models and tools.</li>
+                    </ul>
+                    <div style="margin-top: 1rem;">
+                        <span class="badge">JSON-RPC</span>
+                        <span class="badge">Protocol Design</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title fade-in">Education & <span class="text-gradient">Certifications</span></h2>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+
+                <!-- Education -->
+                <div class="glass-card fade-in delay-100">
+                    <h3
+                        style="margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">
+                        Education</h3>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: #fff;">Master of Science, Business Intelligence & Analytics</h4>
+                        <p style="color: var(--accent);">University of Barcelona | 2019</p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: #fff;">Master of Business Administration (MBA)</h4>
+                        <p style="color: var(--accent);">University Canada West, Vancouver | 2022</p>
+                    </div>
+
+                    <div>
+                        <h4 style="color: #fff;">Bachelor of Science, Electrical Engineering</h4>
+                        <p style="color: var(--accent);">Universidad del Zulia, Venezuela | 2000</p>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="glass-card fade-in delay-200">
+                    <h3
+                        style="margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem;">
+                        Certifications & Awards</h3>
+
+                    <ul class="skill-list">
+                        <li><strong>AWS Certified Machine Learning</strong> – Specialty</li>
+                        <li><strong>AWS Certified Solutions Architect</strong></li>
+                        <li><strong>PMP</strong> (Project Management Professional)</li>
+                        <li><strong>Certified Scrum Master</strong> (CSM)</li>
+                    </ul>
+
+                    <div
+                        style="margin-top: 2rem; background: rgba(61, 90, 254, 0.1); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(61, 90, 254, 0.3);">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;"><i class='bx bxs-trophy'></i> Huawei
+                            Global Innovation Award</h4>
+                        <p style="font-size: 0.9rem; color: #ccc;">(2017) CEO recognition for pioneering ML in
+                            predictive infrastructure planning.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        style="padding: 2rem 0; text-align: center; color: var(--text-secondary); border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; 2025 Gabriel Ordonez Hernandez. All rights reserved.</p>
+            <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem; font-size: 1.5rem;">
+                <a href="https://linkedin.com/in/gordonez" target="_blank"><i class='bx bxl-linkedin-square'></i></a>
+                <a href="https://github.com/gogabrielordonez" target="_blank"><i class='bx bxl-github'></i></a>
+                <a href="mailto:go@gabrielordonez.com"><i class='bx bx-envelope'></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
