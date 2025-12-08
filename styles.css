@@ -280,3 +280,121 @@ section {
     color: #b0b0c0;
     font-size: 0.95rem;
 }
+
+/* GitHub Repositories */
+.repos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.repos-loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+}
+
+.repo-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: var(--glass-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+}
+
+.repo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.repo-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.repo-card h3 a {
+    color: var(--accent);
+}
+
+.repo-card h3 a:hover {
+    text-decoration: underline;
+}
+
+.repo-card .repo-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.repo-card .repo-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.repo-card .repo-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.repo-card .repo-language {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.repo-card .repo-language::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+.repo-card .repo-language.lang-python::before {
+    background: #3572A5;
+}
+
+.repo-card .repo-language.lang-javascript::before {
+    background: #f1e05a;
+}
+
+.repo-card .repo-language.lang-typescript::before {
+    background: #2b7489;
+}
+
+.repo-card .repo-language.lang-html::before {
+    background: #e34c26;
+}
+
+.repo-card .repo-language.lang-css::before {
+    background: #563d7c;
+}
+
+.repos-error {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    background: rgba(255, 100, 100, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 100, 100, 0.2);
+}
