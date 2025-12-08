@@ -2,13 +2,63 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Portfolio loaded.");
 
+    // Mobile Navigation
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navOverlay = document.getElementById('navOverlay');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function openMenu() {
+        navMenu.classList.add('active');
+        navOverlay.classList.add('active');
+        document.body.classList.add('menu-open');
+        navToggle.innerHTML = "<i class='bx bx-x'></i>";
+    }
+
+    function closeMenu() {
+        navMenu.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        navToggle.innerHTML = "<i class='bx bx-menu'></i>";
+    }
+
+    navToggle.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    navOverlay.addEventListener('click', closeMenu);
+
+    // Close menu when clicking a nav link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            closeMenu();
+        });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(targetId);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
