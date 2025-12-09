@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Evaluation Framework | Gabriel Ordonez</title>
+    <meta name="description"
+        content="Case study: LLM benchmarking framework comparing Claude vs GPT-4 with 25% cost optimization">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-styles.css">
+
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <!-- Mobile nav overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                G<span class="text-gradient">O</span>.
+            </a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <i class='bx bx-menu'></i>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#projects" class="nav-link">Projects</a>
+                <a href="index.html#experience" class="nav-link">Experience</a>
+                <a href="https://github.com/gogabrielordonez/llm-evaluation-framework" target="_blank"
+                    class="btn btn-outline nav-cta"><i class='bx bxl-github'></i> View Code</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="container">
+            <a href="index.html#projects" class="back-link fade-in">
+                <i class='bx bx-arrow-back'></i> Back to Projects
+            </a>
+
+            <div class="project-hero-content">
+                <div class="project-badges fade-in delay-100">
+                    <span class="badge">Case Study</span>
+                    <span class="badge badge-accent">LLM Ops</span>
+                    <span class="badge">Cost Optimization</span>
+                </div>
+
+                <h1 class="fade-in delay-200">
+                    LLM Evaluation <br>
+                    <span class="text-gradient">Framework</span>
+                </h1>
+
+                <p class="project-subtitle fade-in delay-300">
+                    Comprehensive benchmarking system for comparing Claude vs GPT-4 performance,
+                    with intelligent prompt caching achieving <strong>25% cost reduction</strong>.
+                </p>
+
+                <div class="project-meta fade-in delay-300">
+                    <div class="meta-item">
+                        <i class='bx bx-calendar'></i>
+                        <span>2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class='bx bx-time-five'></i>
+                        <span>~2 weeks</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class='bx bx-user'></i>
+                        <span>Solo Project</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background elements -->
+        <div class="hero-blur hero-blur-1"></div>
+        <div class="hero-blur hero-blur-2"></div>
+    </section>
+
+    <!-- Problem & Solution -->
+    <section class="project-section">
+        <div class="container">
+            <div class="two-column">
+                <div class="glass-card fade-in">
+                    <div class="card-icon problem">
+                        <i class='bx bx-error-circle'></i>
+                    </div>
+                    <h3>The Problem</h3>
+                    <p>
+                        Choosing the right LLM for production involves complex trade-offs. Organizations struggle with:
+                    </p>
+                    <ul class="problem-list">
+                        <li>No standardized way to compare models</li>
+                        <li>Hidden costs from inefficient prompts</li>
+                        <li>Lack of quality metrics beyond "vibes"</li>
+                        <li>Difficulty justifying model selection to stakeholders</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card fade-in delay-100">
+                    <div class="card-icon solution">
+                        <i class='bx bx-check-circle'></i>
+                    </div>
+                    <h3>The Solution</h3>
+                    <p>
+                        A data-driven evaluation framework that quantifies performance:
+                    </p>
+                    <ul class="solution-list">
+                        <li>Multi-dimensional benchmarking suite</li>
+                        <li>Automated Claude vs GPT-4 comparison</li>
+                        <li>25% cost reduction via prompt optimization</li>
+                        <li>Interactive dashboard for stakeholder reporting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="project-section section-alt">
+        <div class="container">
+            <h2 class="section-title fade-in">System <span class="text-gradient">Architecture</span></h2>
+            <p class="section-description fade-in delay-100">
+                Modular design separating evaluation, optimization, and visualization concerns.
+            </p>
+
+            <!-- Architecture Diagram -->
+            <div class="architecture-diagram fade-in delay-200">
+                <div class="arch-row">
+                    <div class="arch-node ingestion">
+                        <i class='bx bx-list-check'></i>
+                        <span>Benchmark Suite</span>
+                        <small>8 task categories</small>
+                    </div>
+                    <div class="arch-arrow"><i class='bx bx-right-arrow-alt'></i></div>
+                    <div class="arch-node processing">
+                        <i class='bx bx-analyse'></i>
+                        <span>LLM Evaluator</span>
+                        <small>Core engine</small>
+                    </div>
+                    <div class="arch-arrow"><i class='bx bx-right-arrow-alt'></i></div>
+                    <div class="arch-node aws">
+                        <i class='bx bx-bot'></i>
+                        <span>Claude API</span>
+                        <small>Anthropic</small>
+                    </div>
+                </div>
+
+                <div class="arch-row" style="margin-top: 1rem;">
+                    <div class="arch-node" style="visibility: hidden;"></div>
+                    <div class="arch-arrow" style="visibility: hidden;"></div>
+                    <div class="arch-node processing">
+                        <i class='bx bx-analyse'></i>
+                        <span>LLM Evaluator</span>
+                    </div>
+                    <div class="arch-arrow"><i class='bx bx-right-arrow-alt'></i></div>
+                    <div class="arch-node highlight">
+                        <i class='bx bx-bot'></i>
+                        <span>GPT-4 API</span>
+                        <small>OpenAI</small>
+                    </div>
+                </div>
+
+                <div class="arch-divider">
+                    <span>Optimization Layer</span>
+                </div>
+
+                <div class="arch-row">
+                    <div class="arch-node query">
+                        <i class='bx bx-text'></i>
+                        <span>Raw Prompt</span>
+                    </div>
+                    <div class="arch-arrow"><i class='bx bx-right-arrow-alt'></i></div>
+                    <div class="arch-node storage">
+                        <i class='bx bx-data'></i>
+                        <span>LRU Cache</span>
+                        <small>Deduplication</small>
+                    </div>
+                    <div class="arch-arrow"><i class='bx bx-right-arrow-alt'></i></div>
+                    <div class="arch-node processing">
+                        <i class='bx bx-compress'></i>
+                        <span>Compressor</span>
+                        <small>Token reduction</small>
+                    </div>
+                    <div class="arch-arrow"><i class='bx bx-right-arrow-alt'></i></div>
+                    <div class="arch-node output">
+                        <i class='bx bx-dollar-circle'></i>
+                        <span>25% Savings</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Tech <span class="text-gradient">Stack</span></h2>
+
+            <div class="tech-grid">
+                <!-- Python -->
+                <div class="tech-card glass-card fade-in">
+                    <div class="tech-icon" style="background: rgba(55, 118, 171, 0.15); color: #3776AB;">
+                        <i class='bx bxl-python'></i>
+                    </div>
+                    <h4>Python</h4>
+                    <p>Core framework built with modern Python 3.9+ features including dataclasses, type hints, and
+                        async support for efficient API calls.</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">dataclasses</span>
+                        <span class="tech-tag">typing</span>
+                    </div>
+                </div>
+
+                <!-- Anthropic -->
+                <div class="tech-card glass-card fade-in delay-100">
+                    <div class="tech-icon" style="background: rgba(204, 153, 102, 0.15); color: #CC9966;">
+                        <i class='bx bx-brain'></i>
+                    </div>
+                    <h4>Anthropic API</h4>
+                    <p>Direct integration with Claude models (Opus, Sonnet, Haiku) for comprehensive benchmarking across
+                        the Claude family.</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">claude-3-sonnet</span>
+                        <span class="tech-tag">claude-3-opus</span>
+                    </div>
+                </div>
+
+                <!-- OpenAI -->
+                <div class="tech-card glass-card fade-in delay-200">
+                    <div class="tech-icon" style="background: rgba(16, 163, 127, 0.15); color: #10A37F;">
+                        <i class='bx bx-bot'></i>
+                    </div>
+                    <h4>OpenAI API</h4>
+                    <p>GPT-4 and GPT-3.5 Turbo integration for head-to-head comparison against Claude models on
+                        identical tasks.</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">gpt-4-turbo</span>
+                        <span class="tech-tag">gpt-3.5-turbo</span>
+                    </div>
+                </div>
+
+                <!-- Streamlit -->
+                <div class="tech-card glass-card fade-in delay-300">
+                    <div class="tech-icon streamlit">
+                        <i class='bx bx-line-chart'></i>
+                    </div>
+                    <h4>Streamlit + Plotly</h4>
+                    <p>Interactive dashboard for real-time benchmarking visualization, cost analysis, and stakeholder
+                        reporting.</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">Interactive Charts</span>
+                        <span class="tech-tag">Live Metrics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Highlights -->
+    <section class="project-section section-alt">
+        <div class="container">
+            <h2 class="section-title fade-in">Implementation <span class="text-gradient">Highlights</span></h2>
+
+            <div class="code-section fade-in delay-100">
+                <h4><i class='bx bx-code-block'></i> Core Evaluator with Multi-Metric Tracking</h4>
+                <pre><code class="language-python"><span class="keyword">@dataclass</span>
+<span class="keyword">class</span> <span class="class-name">EvaluationResult</span>:
+    <span class="string">"""Container for evaluation metrics"""</span>
+    model: <span class="class-name">str</span>
+    prompt: <span class="class-name">str</span>
+    response: <span class="class-name">str</span>
+    latency_ms: <span class="class-name">float</span>
+    input_tokens: <span class="class-name">int</span>
+    output_tokens: <span class="class-name">int</span>
+    cost_usd: <span class="class-name">float</span>
+    quality_score: <span class="class-name">Optional</span>[<span class="class-name">float</span>] = <span class="keyword">None</span>
+
+    <span class="keyword">@property</span>
+    <span class="keyword">def</span> <span class="function">tokens_per_second</span>(<span class="param">self</span>) -> <span class="class-name">float</span>:
+        <span class="string">"""Calculate throughput"""</span>
+        <span class="keyword">return</span> (<span class="param">self</span>.output_tokens / <span class="param">self</span>.latency_ms) * <span class="number">1000</span></code></pre>
+            </div>
+
+            <div class="code-section fade-in delay-200">
+                <h4><i class='bx bx-data'></i> LRU Cache for Prompt Deduplication</h4>
+                <pre><code class="language-python"><span class="keyword">class</span> <span class="class-name">PromptCache</span>:
+    <span class="string">"""LRU Cache reducing redundant API calls"""</span>
+
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="param">self</span>, max_size=<span class="number">1000</span>, ttl_seconds=<span class="number">3600</span>):
+        <span class="param">self</span>.cache: <span class="class-name">OrderedDict</span> = <span class="class-name">OrderedDict</span>()
+        <span class="param">self</span>.stats = {<span class="string">"hits"</span>: <span class="number">0</span>, <span class="string">"misses"</span>: <span class="number">0</span>, <span class="string">"tokens_saved"</span>: <span class="number">0</span|}
+
+    <span class="keyword">def</span> <span class="function">get</span>(<span class="param">self</span>, prompt: <span class="class-name">str</span>, model: <span class="class-name">str</span>) -> <span class="class-name">Optional</span>[<span class="class-name">CacheEntry</span>]:
+        prompt_hash = <span class="param">self</span>._hash_prompt(prompt, model)
+        <span class="keyword">if</span> prompt_hash <span class="keyword">in</span> <span class="param">self</span>.cache:
+            <span class="param">self</span>.stats[<span class="string">"hits"</span>] += <span class="number">1</span>
+            <span class="param">self</span>.stats[<span class="string">"tokens_saved"</span>] += entry.total_tokens
+            <span class="keyword">return</span> <span class="param">self</span>.cache[prompt_hash]
+        <span class="keyword">return</span> <span class="keyword">None</span></code></pre>
+            </div>
+
+            <div class="code-section fade-in delay-300">
+                <h4><i class='bx bx-compress'></i> Verbose Phrase Compression</h4>
+                <pre><code class="language-python"><span class="keyword">class</span> <span class="class-name">ContextWindowOptimizer</span>:
+    <span class="comment"># Compression patterns for token reduction</span>
+    COMPRESSION_MAP = {
+        <span class="string">r'\bplease\s+could you\s+'</span>: <span class="string">''</span>,
+        <span class="string">r'\bin order to\b'</span>: <span class="string">'to'</span>,
+        <span class="string">r'\bdue to the fact that\b'</span>: <span class="string">'because'</span>,
+        <span class="string">r'\bit is important to note that\b'</span>: <span class="string">'note:'</span>,
+    }
+
+    <span class="keyword">def</span> <span class="function">compress_prompt</span>(<span class="param">self</span>, prompt: <span class="class-name">str</span>) -> <span class="class-name">Tuple</span>[<span class="class-name">str</span>, <span class="class-name">List</span>]:
+        <span class="keyword">for</span> pattern, replacement <span class="keyword">in</span> <span class="param">self</span>.COMPRESSION_MAP.items():
+            prompt = re.sub(pattern, replacement, prompt)
+        <span class="keyword">return</span> prompt, techniques_applied</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Metrics -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Cost <span class="text-gradient">Optimization Results</span></h2>
+
+            <div class="metrics-container fade-in delay-100">
+                <div class="metric-card glass-card">
+                    <div class="metric-value">
+                        <span class="metric-number">25%</span>
+                        <span class="metric-label">Cost Reduction</span>
+                    </div>
+                    <p>Combined savings from caching and prompt compression techniques</p>
+                </div>
+
+                <div class="metric-card glass-card">
+                    <div class="metric-value">
+                        <span class="metric-number">15-20%</span>
+                        <span class="metric-label">Cache Savings</span>
+                    </div>
+                    <p>Avoided API calls through LRU cache with 1-hour TTL</p>
+                </div>
+
+                <div class="metric-card glass-card">
+                    <div class="metric-value">
+                        <span class="metric-number">5-10%</span>
+                        <span class="metric-label">Compression</span>
+                    </div>
+                    <p>Token reduction via verbose phrase elimination</p>
+                </div>
+            </div>
+
+            <!-- Optimization Breakdown -->
+            <div class="performance-comparison fade-in delay-200">
+                <h4>Optimization Technique Breakdown</h4>
+                <div class="comparison-bars">
+                    <div class="bar-item">
+                        <span class="bar-label">Prompt Caching (LRU)</span>
+                        <div class="bar-container">
+                            <div class="bar rag" style="width: 70%;">
+                                <span>15-20%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <span class="bar-label">Verbose Compression</span>
+                        <div class="bar-container">
+                            <div class="bar rag" style="width: 40%;">
+                                <span>5-10%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-item">
+                        <span class="bar-label">Context Window Optimization</span>
+                        <div class="bar-container">
+                            <div class="bar rag" style="width: 25%;">
+                                <span>3-5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benchmark Tasks -->
+    <section class="project-section section-alt">
+        <div class="container">
+            <h2 class="section-title fade-in">Benchmark <span class="text-gradient">Suite</span></h2>
+            <p class="section-description fade-in delay-100">
+                Comprehensive task coverage across reasoning, coding, and creative domains.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-item glass-card fade-in">
+                    <i class='bx bx-brain'></i>
+                    <h4>Logical Reasoning</h4>
+                    <p>Multi-step deduction puzzles testing inference capabilities.</p>
+                </div>
+
+                <div class="feature-item glass-card fade-in delay-100">
+                    <i class='bx bx-math'></i>
+                    <h4>Math Problems</h4>
+                    <p>Word problems requiring step-by-step calculation.</p>
+                </div>
+
+                <div class="feature-item glass-card fade-in delay-200">
+                    <i class='bx bx-code-alt'></i>
+                    <h4>Code Generation</h4>
+                    <p>Algorithm implementation with edge case handling.</p>
+                </div>
+
+                <div class="feature-item glass-card fade-in delay-300">
+                    <i class='bx bx-search-alt'></i>
+                    <h4>Code Analysis</h4>
+                    <p>Bug identification and explanation tasks.</p>
+                </div>
+
+                <div class="feature-item glass-card fade-in">
+                    <i class='bx bx-file'></i>
+                    <h4>Summarization</h4>
+                    <p>Concise extraction from long-form content.</p>
+                </div>
+
+                <div class="feature-item glass-card fade-in delay-100">
+                    <i class='bx bx-edit'></i>
+                    <h4>Creative Writing</h4>
+                    <p>Constrained generation like haiku composition.</p>
+                </div>
+
+                <div class="feature-item glass-card fade-in delay-200">
+                    <i class='bx bx-list-ul'></i>
+                    <h4>Entity Extraction</h4>
+                    <p>Structured JSON output from unstructured text.</p>
+                </div>
+
+                <div class="feature-item glass-card fade-in delay-300">
+                    <i class='bx bx-help-circle'></i>
+                    <h4>Factual Q&A</h4>
+                    <p>Knowledge recall and accuracy testing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Key <span class="text-gradient">Features</span></h2>
+
+            <div class="decisions-list">
+                <div class="decision-item glass-card fade-in">
+                    <div class="decision-header">
+                        <span class="decision-label">Feature</span>
+                        <h4>Multi-Dimensional Metrics</h4>
+                    </div>
+                    <p>Track latency (avg, P50, P95), throughput (tokens/sec), cost (per-request and aggregate), and
+                        quality scores with custom evaluators. Export results to JSON for further analysis.</p>
+                </div>
+
+                <div class="decision-item glass-card fade-in delay-100">
+                    <div class="decision-header">
+                        <span class="decision-label">Feature</span>
+                        <h4>Model Pricing Calculator</h4>
+                    </div>
+                    <p>Built-in pricing data for Claude (Opus, Sonnet, Haiku) and GPT (4, 4-Turbo, 3.5-Turbo). Project
+                        daily, monthly, and yearly costs based on expected usage patterns.</p>
+                </div>
+
+                <div class="decision-item glass-card fade-in delay-200">
+                    <div class="decision-header">
+                        <span class="decision-label">Feature</span>
+                        <h4>Interactive Dashboard</h4>
+                    </div>
+                    <p>Streamlit-based UI with Plotly charts for real-time visualization. Compare models side-by-side,
+                        analyze task-level performance, and generate stakeholder-ready reports.</p>
+                </div>
+
+                <div class="decision-item glass-card fade-in delay-300">
+                    <div class="decision-header">
+                        <span class="decision-label">Feature</span>
+                        <h4>Mock Mode for Development</h4>
+                    </div>
+                    <p>Full framework functionality without API keys. Simulated latency and responses allow testing the
+                        evaluation pipeline before committing to API costs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="project-cta">
+        <div class="container">
+            <div class="cta-content glass-card fade-in">
+                <h2>Explore the Code</h2>
+                <p>Full source code with documentation available on GitHub.</p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/gogabrielordonez/llm-evaluation-framework" target="_blank"
+                        class="btn btn-primary">
+                        <i class='bx bxl-github'></i> View Repository
+                    </a>
+                    <a href="index.html#projects" class="btn btn-outline">
+                        <i class='bx bx-arrow-back'></i> Back to Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Gabriel Ordonez Hernandez. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://linkedin.com/in/gordonez" target="_blank" aria-label="LinkedIn"><i
+                        class='bx bxl-linkedin-square'></i></a>
+                <a href="https://github.com/gogabrielordonez" target="_blank" aria-label="GitHub"><i
+                        class='bx bxl-github'></i></a>
+                <a href="mailto:go@gabrielordonez.com" aria-label="Email"><i class='bx bx-envelope'></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
