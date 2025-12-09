@@ -5,22 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog & Insights | Gabriel Ordonez</title>
+    <meta name="description"
+        content="Technical insights on RAG optimization, LLM evaluation, and enterprise AI implementation by Gabriel Ordonez">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-styles.css">
 
     <!-- Icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
+    <!-- Mobile nav overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- Navigation -->
     <nav id="navbar" class="navbar">
@@ -28,64 +33,170 @@
             <a href="index.html" class="nav-logo">
                 G<span class="text-gradient">O</span>.
             </a>
-            <a href="index.html#home" class="btn btn-outline nav-cta">Back to Home</a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <i class='bx bx-menu'></i>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#projects" class="nav-link">Projects</a>
+                <a href="index.html#experience" class="nav-link">Experience</a>
+                <a href="mailto:go@gabrielordonez.com" class="btn btn-outline nav-cta">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Header -->
-    <section class="hero" style="min-height: 50vh; padding-top: 150px;">
+    <!-- Hero Section -->
+    <section class="project-hero">
         <div class="container">
-            <h1 class="fade-in">Research & <span class="text-gradient">Insights</span></h1>
-            <p class="fade-in delay-100" style="color: var(--text-secondary); max-width: 600px;">
-                Analyzing the intersection of Distributed Systems and Generative AI.
-                Focusing on real-world implementation challenges: latency, evaluation, and operational rigour.
-            </p>
+            <a href="index.html" class="back-link fade-in">
+                <i class='bx bx-arrow-back'></i> Back to Home
+            </a>
+
+            <div class="project-hero-content">
+                <div class="project-badges fade-in delay-100">
+                    <span class="badge">Technical Writing</span>
+                    <span class="badge badge-accent">AI/ML</span>
+                </div>
+
+                <h1 class="fade-in delay-200">
+                    Research & <br>
+                    <span class="text-gradient">Insights</span>
+                </h1>
+
+                <p class="project-subtitle fade-in delay-300">
+                    Analyzing the intersection of Distributed Systems and Generative AI.
+                    Focusing on real-world implementation challenges: latency, evaluation, and operational rigour.
+                </p>
+            </div>
         </div>
 
-        <div
-            style="position: absolute; top: 10%; right: 5%; width: 200px; height: 200px; background: var(--accent); filter: blur(100px); opacity: 0.1; border-radius: 50%; z-index: -1;">
-        </div>
+        <!-- Background elements -->
+        <div class="hero-blur hero-blur-1"></div>
+        <div class="hero-blur hero-blur-2"></div>
     </section>
 
     <!-- Blog Grid -->
-    <section style="padding-top: 0; min-height: 50vh;">
+    <section class="project-section">
         <div class="container">
-            <div class="projects-grid">
+            <h2 class="section-title fade-in">Latest <span class="text-gradient">Articles</span></h2>
 
-                <!-- Article 1 -->
-                <a href="blog/rag-latency.html" class="glass-card fade-in delay-200"
-                    style="text-decoration: none; display: block; border-left: 4px solid var(--primary);">
-                    <div style="margin-bottom: 1rem;">
+            <div class="two-column" style="margin-top: 2rem;">
+
+                <!-- Article 1: RAG Latency -->
+                <a href="blog/rag-latency.html" class="glass-card fade-in delay-100"
+                    style="text-decoration: none; display: block; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
                         <span class="badge">RAG Optimization</span>
-                        <span style="color: var(--text-secondary); font-size: 0.85rem; margin-left: 1rem;">Dec 8,
-                            2025</span>
+                        <span style="color: var(--text-secondary); font-size: 0.85rem;">
+                            <i class='bx bx-time-five'></i> 5 min read
+                        </span>
                     </div>
-                    <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">Latency is the New Accuracy</h2>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: #fff;">
+                        Latency is the New Accuracy
+                    </h3>
+
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">
                         Why high-accuracy retrieval means nothing if your users leave before the answer loads.
-                        Techniques from Cache-Augmented Generation (CAG) to Hybrid Search.
+                        Techniques from Cache-Augmented Generation (CAG) to Hybrid Search that achieved 40% latency reduction.
                     </p>
-                    <span style="color: var(--primary); font-weight: 600;">Read Article <i
-                            class='bx bx-right-arrow-alt'></i></span>
-                </a>
 
-                <!-- Article 2 -->
-                <a href="blog/llm-trust.html" class="glass-card fade-in delay-300"
-                    style="text-decoration: none; display: block; border-left: 4px solid var(--accent);">
-                    <div style="margin-bottom: 1rem;">
-                        <span class="badge" style="border-color: var(--accent); color: var(--accent);">Evaluation</span>
-                        <span style="color: var(--text-secondary); font-size: 0.85rem; margin-left: 1rem;">Dec 8,
-                            2025</span>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <img src="https://ui-avatars.com/api/?name=GO&background=3d5afe&color=fff&rounded=true&size=32"
+                                alt="Author" style="width: 32px; height: 32px; border-radius: 50%;">
+                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Dec 8, 2025</span>
+                        </div>
+                        <span style="color: var(--primary); font-weight: 600;">
+                            Read Article <i class='bx bx-right-arrow-alt'></i>
+                        </span>
                     </div>
-                    <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">The Trust Gap in GenAI</h2>
-                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                        Moving beyond academic benchmarks (MMLU) to business-centric metrics. Implementing
-                        "LLM-as-a-Judge" to guarantee brand safety.
-                    </p>
-                    <span style="color: var(--accent); font-weight: 600;">Read Article <i
-                            class='bx bx-right-arrow-alt'></i></span>
                 </a>
 
+                <!-- Article 2: Trust Gap -->
+                <a href="blog/llm-trust.html" class="glass-card fade-in delay-200"
+                    style="text-decoration: none; display: block; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <span class="badge" style="border-color: var(--accent); color: var(--accent);">LLM Evaluation</span>
+                        <span style="color: var(--text-secondary); font-size: 0.85rem;">
+                            <i class='bx bx-time-five'></i> 6 min read
+                        </span>
+                    </div>
+
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: #fff;">
+                        The Trust Gap in GenAI
+                    </h3>
+
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">
+                        Moving beyond academic benchmarks (MMLU) to business-centric metrics. Implementing
+                        "LLM-as-a-Judge" patterns and RAGAs framework for production-grade evaluation.
+                    </p>
+
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <img src="https://ui-avatars.com/api/?name=GO&background=3d5afe&color=fff&rounded=true&size=32"
+                                alt="Author" style="width: 32px; height: 32px; border-radius: 50%;">
+                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Dec 8, 2025</span>
+                        </div>
+                        <span style="color: var(--accent); font-weight: 600;">
+                            Read Article <i class='bx bx-right-arrow-alt'></i>
+                        </span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section class="project-section section-alt">
+        <div class="container">
+            <h2 class="section-title fade-in">Topics I <span class="text-gradient">Write About</span></h2>
+
+            <div class="features-grid" style="margin-top: 2rem;">
+                <div class="feature-item glass-card fade-in">
+                    <i class='bx bx-search-alt'></i>
+                    <h4>RAG Architecture</h4>
+                    <p>Retrieval strategies, chunking, hybrid search, and latency optimization.</p>
+                </div>
+
+                <div class="feature-item glass-card fade-in delay-100">
+                    <i class='bx bx-check-shield'></i>
+                    <h4>LLM Evaluation</h4>
+                    <p>Benchmarking, LLM-as-Judge, RAGAs metrics, and quality assurance.</p>
+                </div>
+
+                <div class="feature-item glass-card fade-in delay-200">
+                    <i class='bx bx-dollar-circle'></i>
+                    <h4>Cost Optimization</h4>
+                    <p>Prompt caching, model selection, and token usage reduction.</p>
+                </div>
+
+                <div class="feature-item glass-card fade-in delay-300">
+                    <i class='bx bx-server'></i>
+                    <h4>MLOps & Infrastructure</h4>
+                    <p>Production deployment, scaling, and operational best practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="project-cta">
+        <div class="container">
+            <div class="cta-content glass-card fade-in">
+                <h2>Want to Collaborate?</h2>
+                <p>I'm always open to discussing AI implementation challenges and solutions.</p>
+                <div class="cta-buttons">
+                    <a href="https://linkedin.com/in/gordonez" target="_blank" class="btn btn-primary">
+                        <i class='bx bxl-linkedin'></i> Connect on LinkedIn
+                    </a>
+                    <a href="index.html#projects" class="btn btn-outline">
+                        <i class='bx bx-code-alt'></i> View Projects
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -93,7 +204,14 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Gabriel Ordonez Hernandez.</p>
+            <p>&copy; 2025 Gabriel Ordonez Hernandez. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://linkedin.com/in/gordonez" target="_blank" aria-label="LinkedIn"><i
+                        class='bx bxl-linkedin-square'></i></a>
+                <a href="https://github.com/gogabrielordonez" target="_blank" aria-label="GitHub"><i
+                        class='bx bxl-github'></i></a>
+                <a href="mailto:go@gabrielordonez.com" aria-label="Email"><i class='bx bx-envelope'></i></a>
+            </div>
         </div>
     </footer>
 

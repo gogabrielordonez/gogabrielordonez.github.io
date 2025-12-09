@@ -5,22 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latency is the New Accuracy | Gabriel Ordonez</title>
+    <meta name="description"
+        content="Why high-accuracy RAG retrieval means nothing if users leave before the answer loads. Techniques for 40% latency reduction.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../project-styles.css">
 
     <!-- Icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
+    <!-- Mobile nav overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- Navigation -->
     <nav id="navbar" class="navbar">
@@ -28,90 +33,274 @@
             <a href="../index.html" class="nav-logo">
                 G<span class="text-gradient">O</span>.
             </a>
-            <a href="../index.html#home" class="btn btn-outline nav-cta">Back to Home</a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <i class='bx bx-menu'></i>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#projects" class="nav-link">Projects</a>
+                <a href="../blog.html" class="nav-link">Blog</a>
+                <a href="mailto:go@gabrielordonez.com" class="btn btn-outline nav-cta">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Blog Content -->
-    <section class="hero" style="min-height: 40vh; padding-top: 150px;">
+    <!-- Hero Section -->
+    <section class="project-hero">
         <div class="container">
-            <span class="badge" style="margin-bottom: 1rem;">RAG Optimization</span>
-            <h1 class="fade-in">Latency is the New Accuracy: <br /><span class="text-gradient">Optimizing RAG for
-                    Enterprise Ops</span></h1>
-            <p class="fade-in delay-100" style="color: var(--text-secondary); max-width: 700px;">
-                Why high-accuracy retrieval means nothing if your users leave before the answer loads. Techniques from
-                Cache-Augmented Generation (CAG) to Hybrid Search.
-            </p>
-            <div class="fade-in delay-200"
-                style="margin-top: 1rem; display: flex; align-items: center; gap: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
-                <img src="https://ui-avatars.com/api/?name=Gabriel+Ordonez&background=3d5afe&color=fff&rounded=true"
-                    alt="Author" style="width: 40px; height: 40px;">
-                <span>Gabriel Ordonez</span>
-                <span>•</span>
-                <span>Dec 8, 2025</span>
-                <span>•</span>
-                <span>5 min read</span>
+            <a href="../blog.html" class="back-link fade-in">
+                <i class='bx bx-arrow-back'></i> Back to Blog
+            </a>
+
+            <div class="project-hero-content">
+                <div class="project-badges fade-in delay-100">
+                    <span class="badge">RAG Optimization</span>
+                    <span class="badge badge-accent">Performance</span>
+                </div>
+
+                <h1 class="fade-in delay-200">
+                    Latency is the <br>
+                    <span class="text-gradient">New Accuracy</span>
+                </h1>
+
+                <p class="project-subtitle fade-in delay-300">
+                    Why high-accuracy retrieval means nothing if your users leave before the answer loads.
+                    Techniques from Cache-Augmented Generation to Hybrid Search.
+                </p>
+
+                <div class="project-meta fade-in delay-300">
+                    <div class="meta-item">
+                        <img src="https://ui-avatars.com/api/?name=GO&background=3d5afe&color=fff&rounded=true&size=32"
+                            alt="Author" style="width: 32px; height: 32px; border-radius: 50%;">
+                        <span>Gabriel Ordonez</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class='bx bx-calendar'></i>
+                        <span>Dec 8, 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class='bx bx-time-five'></i>
+                        <span>5 min read</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background elements -->
+        <div class="hero-blur hero-blur-1"></div>
+        <div class="hero-blur hero-blur-2"></div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="project-section">
+        <div class="container" style="max-width: 800px;">
+
+            <!-- Introduction -->
+            <div class="glass-card fade-in" style="margin-bottom: 2rem;">
+                <h2 style="color: #fff; margin-bottom: 1rem;">The 3-Second Rule in Distributed AI</h2>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                    In traditional web infrastructure, we obsessed over time-to-first-byte (TTFB). In the GenAI era, the
+                    metric has shifted to <strong style="color: var(--accent);">Time-to-Insight</strong>.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-top: 1rem;">
+                    While researching common failure modes in enterprise RAG deployments, I found that latency—not
+                    hallucination—is the primary driver of user churn.
+                    A user's workflow breaks if they wait more than 5 seconds for a document summary.
+                </p>
+            </div>
+
+            <!-- Key Insight Callout -->
+            <div class="glass-card fade-in delay-100"
+                style="border-left: 4px solid var(--primary); margin-bottom: 2rem;">
+                <div class="card-icon solution" style="margin-bottom: 1rem;">
+                    <i class='bx bx-bulb'></i>
+                </div>
+                <h3 style="color: #fff; margin-bottom: 0.5rem;">Key Finding</h3>
+                <p style="color: var(--text-secondary); font-size: 1.1rem;">
+                    <strong>60% of RAG latency sits in the retrieval step</strong>, not the LLM generation.
+                    Optimizing retrieval is where you get the biggest wins.
+                </p>
+            </div>
+
+            <!-- Section: Pipeline Optimization -->
+            <div class="glass-card fade-in delay-200" style="margin-bottom: 2rem;">
+                <h2 style="color: #fff; margin-bottom: 1.5rem;">Optimizing the Pipeline: Lessons from the Field</h2>
+
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                    Implementing RAG at scale (as demonstrated in my
+                    <a href="../rag-project.html" style="color: var(--accent);">Document Intelligence Pipeline</a>
+                    project) revealed several optimization opportunities:
+                </p>
+
+                <h3 style="color: var(--accent); margin-bottom: 1rem;">
+                    <i class='bx bx-search'></i> Hybrid Search + Caching
+                </h3>
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                    By combining keyword search (BM25) with semantic vector search (FAISS), we reduce the
+                    candidate pool size needed for re-ranking. Coupled with <strong>Cache-Augmented Generation
+                        (CAG)</strong>
+                    principles—where we pre-compute embeddings for static policy docs—we achieved significant gains.
+                </p>
+
+                <!-- Code Example -->
+                <div class="code-section">
+                    <h4><i class='bx bx-code-block'></i> Hybrid Search Implementation</h4>
+                    <pre><code class="language-python"><span class="keyword">class</span> <span class="class-name">HybridRetriever</span>:
+    <span class="string">"""Combine BM25 keyword + semantic vector search"""</span>
+
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="param">self</span>, vector_store, bm25_index):
+        <span class="param">self</span>.vector_store = vector_store
+        <span class="param">self</span>.bm25 = bm25_index
+        <span class="param">self</span>.alpha = <span class="number">0.5</span>  <span class="comment"># Weight balance</span>
+
+    <span class="keyword">def</span> <span class="function">retrieve</span>(<span class="param">self</span>, query: <span class="class-name">str</span>, top_k: <span class="class-name">int</span> = <span class="number">10</span>):
+        <span class="comment"># Parallel retrieval for speed</span>
+        semantic_results = <span class="param">self</span>.vector_store.search(query, k=top_k*<span class="number">2</span>)
+        keyword_results = <span class="param">self</span>.bm25.search(query, k=top_k*<span class="number">2</span>)
+
+        <span class="comment"># Reciprocal Rank Fusion</span>
+        fused_scores = <span class="param">self</span>._rrf_fusion(semantic_results, keyword_results)
+        <span class="keyword">return</span> sorted(fused_scores, reverse=<span class="keyword">True</span>)[:top_k]</code></pre>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="glass-card fade-in delay-300" style="margin-bottom: 2rem;">
+                <h2 style="color: #fff; margin-bottom: 1.5rem;">The "40% Solution"</h2>
+
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                    In my benchmarking, moving from naive LangChain chaining to a parallelized retrieval architecture
+                    dropped average query latency from 3.5s to 2.1s.
+                </p>
+
+                <!-- Metrics Grid -->
+                <div class="metrics-container" style="margin-bottom: 1.5rem;">
+                    <div class="metric-card glass-card">
+                        <div class="metric-value">
+                            <span class="metric-number">3.5s</span>
+                            <span class="metric-label">Before</span>
+                        </div>
+                        <p>Naive sequential retrieval</p>
+                    </div>
+
+                    <div class="metric-card glass-card">
+                        <div class="metric-value">
+                            <span class="metric-number">2.1s</span>
+                            <span class="metric-label">After</span>
+                        </div>
+                        <p>Parallelized hybrid search</p>
+                    </div>
+
+                    <div class="metric-card glass-card">
+                        <div class="metric-value">
+                            <span class="metric-number">40%</span>
+                            <span class="metric-label">Reduction</span>
+                        </div>
+                        <p>Latency improvement</p>
+                    </div>
+                </div>
+
+                <p style="color: var(--text-secondary); line-height: 1.8;">
+                    For a customer service agent handling 50 calls a day, that saves nearly
+                    <strong style="color: var(--accent);">2 hours of waiting time per month</strong>.
+                </p>
+            </div>
+
+            <!-- Future Section -->
+            <div class="glass-card fade-in" style="margin-bottom: 2rem;">
+                <h2 style="color: #fff; margin-bottom: 1.5rem;">Future-Proofing with "Long RAG"</h2>
+
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+                    Recent papers (2024/2025) suggest moving towards "Long RAG"—ingesting entire document clusters into
+                    massive context windows (1M+ tokens) to bypass retrieval entirely for specific domains.
+                </p>
+
+                <p style="color: var(--text-secondary); line-height: 1.8;">
+                    However, <strong>cost constraints in enterprise environments</strong> make optimized,
+                    shorter-context RAG relevant for the foreseeable future. At $15/1M tokens for GPT-4,
+                    stuffing 500K tokens per query isn't economically viable for most use cases.
+                </p>
+            </div>
+
+            <!-- Key Takeaways -->
+            <div class="glass-card fade-in" style="border-left: 4px solid var(--accent); margin-bottom: 2rem;">
+                <h3 style="color: #fff; margin-bottom: 1rem;">
+                    <i class='bx bx-list-check'></i> Key Takeaways
+                </h3>
+                <ul class="solution-list">
+                    <li>Latency, not accuracy, is the primary driver of user abandonment in RAG systems</li>
+                    <li>60% of latency sits in retrieval—optimize there first</li>
+                    <li>Hybrid search (BM25 + semantic) with caching can achieve 40% latency reduction</li>
+                    <li>Parallelized retrieval is a quick win for most architectures</li>
+                    <li>Long-context models are promising but cost-prohibitive for most enterprises</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="project-cta">
+        <div class="container">
+            <div class="cta-content glass-card fade-in">
+                <h2>See It In Action</h2>
+                <p>Check out my RAG implementation with these optimizations applied.</p>
+                <div class="cta-buttons">
+                    <a href="../rag-project.html" class="btn btn-primary">
+                        <i class='bx bx-code-alt'></i> View RAG Project
+                    </a>
+                    <a href="../blog.html" class="btn btn-outline">
+                        <i class='bx bx-arrow-back'></i> Back to Blog
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section style="padding-top: 0;">
+    <!-- Related Articles -->
+    <section class="project-section section-alt">
+        <div class="container">
+            <h2 class="section-title fade-in">Related <span class="text-gradient">Articles</span></h2>
+
+            <div class="two-column" style="margin-top: 2rem;">
+                <a href="llm-trust.html" class="glass-card fade-in delay-100" style="text-decoration: none;">
+                    <span class="badge" style="border-color: var(--accent); color: var(--accent);">LLM Evaluation</span>
+                    <h4 style="color: #fff; margin: 1rem 0;">The Trust Gap in GenAI</h4>
+                    <p style="color: var(--text-secondary);">Moving beyond academic benchmarks to business-centric
+                        metrics.</p>
+                    <span style="color: var(--accent); font-weight: 500;">Read Article <i
+                            class='bx bx-right-arrow-alt'></i></span>
+                </a>
+
+                <a href="../llm-eval-project.html" class="glass-card fade-in delay-200" style="text-decoration: none;">
+                    <span class="badge">Project</span>
+                    <h4 style="color: #fff; margin: 1rem 0;">LLM Evaluation Framework</h4>
+                    <p style="color: var(--text-secondary);">Benchmarking Claude vs GPT-4 with 25% cost optimization.</p>
+                    <span style="color: var(--primary); font-weight: 500;">View Project <i
+                            class='bx bx-right-arrow-alt'></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Section -->
+    <section class="project-section">
         <div class="container" style="max-width: 800px;">
-            <div class="glass-card fade-in delay-300" style="padding: 3rem;">
-
-                <h2 style="color: var(--text-primary); margin-bottom: 1.5rem;">The 3-Second Rule in Distributed AI</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.8;">
-                    In traditional web infrastructure, we obsessed over time-to-first-byte (TTFB). In the GenAI era, the
-                    metric has shifted to <strong>Time-to-Insight</strong>.
-                    While researching common failure modes in enterprise RAG deployments, I found that latency—not
-                    hallucination—is the primary driver of user churn.
-                    A users workflow breaks if they wait >5s for a document summary.
-                </p>
-
-                <h3 style="color: #fff; margin-bottom: 1rem;">Optimizing the Pipeline: Lessons from the Field</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                    Implementing RAG at scale (as demonstrated in my <a href="../rag-project.html"
-                        style="color: var(--accent);">Document Intelligence Pipeline</a> project) revealed that 60% of
-                    latency usually sits in the retrievalstep, not the LLM generation.
-                </p>
-
-                <div
-                    style="background: rgba(61, 90, 254, 0.05); border-left: 4px solid var(--primary); padding: 1.5rem; margin-bottom: 2rem; border-radius: 0 8px 8px 0;">
-                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Key Optimization Strategy: Hybrid Search +
-                        Caching</h4>
-                    <p style="font-size: 0.95rem; color: #ccc;">
-                        By combining keyword search (BM25) with semantic vector search (FAISS/Titan), we reduce the
-                        candidate pool size needed for re-ranking.
-                        Coupled with <strong>Cache-Augmented Generation (CAG)</strong> principles—where we pre-compute
-                        embeddings for static policy docs—we achieved a <strong>40% reduction</strong> in retrieval
-                        time.
-                    </p>
+            <div class="glass-card fade-in" style="text-align: center;">
+                <h3 style="color: #fff; margin-bottom: 1rem;">Found this useful?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Share it with your network</p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://gabrielordonez.com/blog/rag-latency.html"
+                        target="_blank" class="btn btn-outline">
+                        <i class='bx bxl-linkedin'></i> Share on LinkedIn
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?text=Latency%20is%20the%20New%20Accuracy%20-%20RAG%20Optimization&url=https://gabrielordonez.com/blog/rag-latency.html"
+                        target="_blank" class="btn btn-outline">
+                        <i class='bx bxl-twitter'></i> Share on X
+                    </a>
                 </div>
-
-                <h3 style="color: #fff; margin-bottom: 1rem;">Future-Proofing with "Long RAG"</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                    Recent papers (2024/2025) suggest moving towards "Long RAG"—ingesting entire document clusters into
-                    massive context windows (1M+ tokens) to bypass retrieval entirely for specific domains.
-                    However, cost constraints in enterprise environments make optimized, shorter-context RAG relevant
-                    for the foreseeable future.
-                </p>
-
-                <h3 style="color: #fff; margin-bottom: 1rem;">The "40% Solution"</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                    In my benchmarking, moving from naive langchain chaining to a parallelized retrieval architecture
-                    dropped average query latency from 3.5s to 2.1s.
-                    For a customer service agent handling 50 calls a day, that saves nearly 2 hours of waiting time per
-                    month.
-                </p>
-
-                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0;">
-
-                <div style="display: flex; gap: 1rem;">
-                    <a href="https://github.com/gogabrielordonez/rag-document-intelligence-pipeline" target="_blank"
-                        class="btn btn-primary">View the Code</a>
-                    <a href="../index.html#projects" class="btn btn-outline">See More Projects</a>
-                </div>
-
             </div>
         </div>
     </section>
@@ -119,10 +308,18 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Gabriel Ordonez Hernandez.</p>
+            <p>&copy; 2025 Gabriel Ordonez Hernandez. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://linkedin.com/in/gordonez" target="_blank" aria-label="LinkedIn"><i
+                        class='bx bxl-linkedin-square'></i></a>
+                <a href="https://github.com/gogabrielordonez" target="_blank" aria-label="GitHub"><i
+                        class='bx bxl-github'></i></a>
+                <a href="mailto:go@gabrielordonez.com" aria-label="Email"><i class='bx bx-envelope'></i></a>
+            </div>
         </div>
     </footer>
 
+    <script src="../script.js"></script>
 </body>
 
 </html>

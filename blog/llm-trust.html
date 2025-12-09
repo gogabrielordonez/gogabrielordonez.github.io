@@ -4,23 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Trust Gap | Gabriel Ordonez</title>
+    <title>The Trust Gap in GenAI | Gabriel Ordonez</title>
+    <meta name="description"
+        content="Moving beyond academic benchmarks (MMLU) to business-centric metrics. Implementing LLM-as-a-Judge for production-grade evaluation.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../project-styles.css">
 
     <!-- Icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
+    <!-- Mobile nav overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- Navigation -->
     <nav id="navbar" class="navbar">
@@ -28,79 +33,343 @@
             <a href="../index.html" class="nav-logo">
                 G<span class="text-gradient">O</span>.
             </a>
-            <a href="../index.html#home" class="btn btn-outline nav-cta">Back to Home</a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <i class='bx bx-menu'></i>
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#projects" class="nav-link">Projects</a>
+                <a href="../blog.html" class="nav-link">Blog</a>
+                <a href="mailto:go@gabrielordonez.com" class="btn btn-outline nav-cta">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Blog Content -->
-    <section class="hero" style="min-height: 40vh; padding-top: 150px;">
+    <!-- Hero Section -->
+    <section class="project-hero">
         <div class="container">
-            <span class="badge" style="margin-bottom: 1rem;">Models & Ethics</span>
-            <h1 class="fade-in">The Trust Gap: <br /><span class="text-gradient">Engineering Eval Frameworks for
-                    GenAI</span></h1>
-            <p class="fade-in delay-100" style="color: var(--text-secondary); max-width: 700px;">
-                Moving beyond academic benchmarks (MMLU) to business-centric metrics that actually matter for enterprise
-                adoption.
-            </p>
-            <div class="fade-in delay-200"
-                style="margin-top: 1rem; display: flex; align-items: center; gap: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
-                <img src="https://ui-avatars.com/api/?name=Gabriel+Ordonez&background=3d5afe&color=fff&rounded=true"
-                    alt="Author" style="width: 40px; height: 40px;">
-                <span>Gabriel Ordonez</span>
-                <span>•</span>
-                <span>Dec 8, 2025</span>
-                <span>•</span>
-                <span>6 min read</span>
+            <a href="../blog.html" class="back-link fade-in">
+                <i class='bx bx-arrow-back'></i> Back to Blog
+            </a>
+
+            <div class="project-hero-content">
+                <div class="project-badges fade-in delay-100">
+                    <span class="badge">LLM Evaluation</span>
+                    <span class="badge badge-accent">Enterprise AI</span>
+                </div>
+
+                <h1 class="fade-in delay-200">
+                    The Trust Gap in <br>
+                    <span class="text-gradient">GenAI</span>
+                </h1>
+
+                <p class="project-subtitle fade-in delay-300">
+                    Moving beyond academic benchmarks (MMLU) to business-centric metrics.
+                    Implementing "LLM-as-a-Judge" patterns for production-grade evaluation.
+                </p>
+
+                <div class="project-meta fade-in delay-300">
+                    <div class="meta-item">
+                        <img src="https://ui-avatars.com/api/?name=GO&background=3d5afe&color=fff&rounded=true&size=32"
+                            alt="Author" style="width: 32px; height: 32px; border-radius: 50%;">
+                        <span>Gabriel Ordonez</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class='bx bx-calendar'></i>
+                        <span>Dec 8, 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class='bx bx-time-five'></i>
+                        <span>6 min read</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background elements -->
+        <div class="hero-blur hero-blur-1"></div>
+        <div class="hero-blur hero-blur-2"></div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="project-section">
+        <div class="container" style="max-width: 800px;">
+
+            <!-- Introduction -->
+            <div class="glass-card fade-in" style="margin-bottom: 2rem;">
+                <h2 style="color: #fff; margin-bottom: 1rem;">Why Your CEO Doesn't Care About Perplexity</h2>
+                <p style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                    In early 2024, I sat in a boardroom where an engineering lead pitched a new Llama-3 based chatbot.
+                    They showed impressive Hugging Face leaderboard scores. The CMO asked one question:
+                </p>
+                <blockquote
+                    style="border-left: 4px solid var(--accent); padding-left: 1.5rem; margin: 1.5rem 0; font-style: italic; color: #fff; font-size: 1.2rem;">
+                    "Can you guarantee it won't recommend our competitor?"
+                </blockquote>
+                <p style="color: var(--text-secondary); line-height: 1.8;">
+                    Silence. That moment crystallized the <strong style="color: var(--accent);">trust gap</strong>
+                    between academic AI metrics and business requirements.
+                </p>
+            </div>
+
+            <!-- The Problem -->
+            <div class="glass-card fade-in delay-100"
+                style="border-left: 4px solid var(--primary); margin-bottom: 2rem;">
+                <div class="card-icon problem" style="margin-bottom: 1rem;">
+                    <i class='bx bx-error-circle'></i>
+                </div>
+                <h3 style="color: #fff; margin-bottom: 0.5rem;">The Problem with Academic Benchmarks</h3>
+                <p style="color: var(--text-secondary); line-height: 1.8;">
+                    MMLU scores don't tell you if your chatbot will maintain brand voice.
+                    Perplexity doesn't measure whether responses are safe for customer-facing deployment.
+                    <strong>Business stakeholders need different metrics.</strong>
+                </p>
+            </div>
+
+            <!-- Business-First Metrics -->
+            <div class="glass-card fade-in delay-200" style="margin-bottom: 2rem;">
+                <h2 style="color: #fff; margin-bottom: 1.5rem;">Designing Business-First Metrics</h2>
+
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                    To cross the chasm from "cool demo" to "production tool," we need frameworks that measure what
+                    actually matters. Enter <strong style="color: var(--accent);">RAGAs</strong> (Retrieval Augmented
+                    Generation Assessment)—the emerging gold standard for production evaluation.
+                </p>
+
+                <!-- Metrics Table -->
+                <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+                    <table
+                        style="width: 100%; border-collapse: collapse; color: var(--text-secondary); font-size: 0.95rem;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--primary);">
+                                <th style="text-align: left; padding: 1rem; color: #fff;">Metric</th>
+                                <th style="text-align: left; padding: 1rem; color: #fff;">What It Measures</th>
+                                <th style="text-align: left; padding: 1rem; color: #fff;">Business Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 1rem;"><strong style="color: var(--accent);">Faithfulness</strong>
+                                </td>
+                                <td style="padding: 1rem;">Does the answer match retrieved context?</td>
+                                <td style="padding: 1rem;">Reduces hallucination risk</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 1rem;"><strong style="color: var(--accent);">Answer Relevancy</strong></td>
+                                <td style="padding: 1rem;">Is the response on-topic?</td>
+                                <td style="padding: 1rem;">Customer satisfaction</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <td style="padding: 1rem;"><strong style="color: var(--accent);">Context Precision</strong></td>
+                                <td style="padding: 1rem;">Are relevant chunks ranked higher?</td>
+                                <td style="padding: 1rem;">Retrieval efficiency</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem;"><strong style="color: var(--accent);">Brand Safety</strong>
+                                </td>
+                                <td style="padding: 1rem;">Does output align with guidelines?</td>
+                                <td style="padding: 1rem;">Legal/reputation risk</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- LLM-as-Judge -->
+            <div class="glass-card fade-in delay-300" style="margin-bottom: 2rem;">
+                <h2 style="color: #fff; margin-bottom: 1.5rem;">The "LLM-as-a-Judge" Paradigm</h2>
+
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                    We can't rely on human evaluation at scale. The solution: use a stronger model (GPT-4 or Claude 3
+                    Opus) to evaluate outputs of smaller, faster models. This enables automated regression testing on
+                    "tone," "safety," and "brand alignment" with every commit.
+                </p>
+
+                <!-- Code Example -->
+                <div class="code-section">
+                    <h4><i class='bx bx-code-block'></i> LLM-as-Judge Implementation</h4>
+                    <pre><code class="language-python"><span class="keyword">class</span> <span class="class-name">LLMJudge</span>:
+    <span class="string">"""Use a stronger model to evaluate weaker model outputs"""</span>
+
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="param">self</span>, judge_model=<span class="string">"claude-3-opus"</span>):
+        <span class="param">self</span>.judge = AnthropicClient(model=judge_model)
+        <span class="param">self</span>.rubric = <span class="param">self</span>._load_evaluation_rubric()
+
+    <span class="keyword">def</span> <span class="function">evaluate</span>(<span class="param">self</span>, query: <span class="class-name">str</span>, response: <span class="class-name">str</span>, context: <span class="class-name">str</span>):
+        prompt = <span class="string">f"""
+        Evaluate this response on a scale of 1-5 for:
+        1. Faithfulness to context
+        2. Answer relevancy
+        3. Brand safety
+
+        Query: {query}
+        Context: {context}
+        Response: {response}
+
+        Return JSON with scores and reasoning.
+        """</span>
+
+        <span class="keyword">return</span> <span class="param">self</span>.judge.complete(prompt)</code></pre>
+                </div>
+            </div>
+
+            <!-- Cost Optimization -->
+            <div class="glass-card fade-in" style="margin-bottom: 2rem;">
+                <h2 style="color: #fff; margin-bottom: 1.5rem;">Cost Optimization via Evaluation</h2>
+
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+                    Rigorous eval frameworks also unlock cost savings. By benchmarking prompt performance, I was able to
+                    prove that for 80% of queries, a smaller, cheaper model performed identically to the flagship model.
+                </p>
+
+                <!-- Metrics Grid -->
+                <div class="metrics-container" style="margin-bottom: 1.5rem;">
+                    <div class="metric-card glass-card">
+                        <div class="metric-value">
+                            <span class="metric-number">80%</span>
+                            <span class="metric-label">Queries</span>
+                        </div>
+                        <p>Can use smaller model</p>
+                    </div>
+
+                    <div class="metric-card glass-card">
+                        <div class="metric-value">
+                            <span class="metric-number">25%</span>
+                            <span class="metric-label">Cost Saved</span>
+                        </div>
+                        <p>Via intelligent routing</p>
+                    </div>
+
+                    <div class="metric-card glass-card">
+                        <div class="metric-value">
+                            <span class="metric-number">0%</span>
+                            <span class="metric-label">Quality Loss</span>
+                        </div>
+                        <p>On routed queries</p>
+                    </div>
+                </div>
+
+                <p style="color: var(--text-secondary); line-height: 1.8;">
+                    The key insight: <strong style="color: var(--accent);">you can't optimize what you can't
+                        measure</strong>.
+                    Build the evaluation framework first, then use it to justify model selection decisions to
+                    stakeholders.
+                </p>
+            </div>
+
+            <!-- Implementation Guide -->
+            <div class="glass-card fade-in" style="margin-bottom: 2rem;">
+                <h2 style="color: #fff; margin-bottom: 1.5rem;">Building Your Evaluation Pipeline</h2>
+
+                <div class="features-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+                    <div class="feature-item glass-card">
+                        <i class='bx bx-data'></i>
+                        <h4>1. Create a Golden Dataset</h4>
+                        <p>Curate 100-500 representative query-response pairs with human-labeled quality scores.</p>
+                    </div>
+
+                    <div class="feature-item glass-card">
+                        <i class='bx bx-check-shield'></i>
+                        <h4>2. Define Business Metrics</h4>
+                        <p>Work with stakeholders to define what "good" means: brand voice, safety boundaries, accuracy
+                            thresholds.</p>
+                    </div>
+
+                    <div class="feature-item glass-card">
+                        <i class='bx bx-bot'></i>
+                        <h4>3. Implement LLM-as-Judge</h4>
+                        <p>Use a strong evaluator model with detailed rubrics to score outputs automatically.</p>
+                    </div>
+
+                    <div class="feature-item glass-card">
+                        <i class='bx bx-git-merge'></i>
+                        <h4>4. Integrate into CI/CD</h4>
+                        <p>Run evaluations on every PR. Block merges if quality scores drop below thresholds.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Takeaways -->
+            <div class="glass-card fade-in" style="border-left: 4px solid var(--accent); margin-bottom: 2rem;">
+                <h3 style="color: #fff; margin-bottom: 1rem;">
+                    <i class='bx bx-list-check'></i> Key Takeaways
+                </h3>
+                <ul class="solution-list">
+                    <li>Academic benchmarks (MMLU, perplexity) don't address business concerns</li>
+                    <li>RAGAs framework measures faithfulness, relevancy, and precision</li>
+                    <li>LLM-as-Judge enables automated quality testing at scale</li>
+                    <li>Evaluation frameworks unlock cost optimization opportunities</li>
+                    <li>Build eval pipelines before deploying to production</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="project-cta">
+        <div class="container">
+            <div class="cta-content glass-card fade-in">
+                <h2>See My Evaluation Framework</h2>
+                <p>I built a complete benchmarking system comparing Claude vs GPT-4 with these principles.</p>
+                <div class="cta-buttons">
+                    <a href="../llm-eval-project.html" class="btn btn-primary">
+                        <i class='bx bx-code-alt'></i> View Evaluation Project
+                    </a>
+                    <a href="../blog.html" class="btn btn-outline">
+                        <i class='bx bx-arrow-back'></i> Back to Blog
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section style="padding-top: 0;">
+    <!-- Related Articles -->
+    <section class="project-section section-alt">
+        <div class="container">
+            <h2 class="section-title fade-in">Related <span class="text-gradient">Articles</span></h2>
+
+            <div class="two-column" style="margin-top: 2rem;">
+                <a href="rag-latency.html" class="glass-card fade-in delay-100" style="text-decoration: none;">
+                    <span class="badge">RAG Optimization</span>
+                    <h4 style="color: #fff; margin: 1rem 0;">Latency is the New Accuracy</h4>
+                    <p style="color: var(--text-secondary);">Why high-accuracy retrieval means nothing if users leave
+                        before the answer loads.</p>
+                    <span style="color: var(--primary); font-weight: 500;">Read Article <i
+                            class='bx bx-right-arrow-alt'></i></span>
+                </a>
+
+                <a href="../genai-search-project.html" class="glass-card fade-in delay-200"
+                    style="text-decoration: none;">
+                    <span class="badge" style="border-color: var(--accent); color: var(--accent);">Project</span>
+                    <h4 style="color: #fff; margin: 1rem 0;">GenAI Semantic Search</h4>
+                    <p style="color: var(--text-secondary);">Full-stack vector database application with FAISS and
+                        Pinecone.</p>
+                    <span style="color: var(--accent); font-weight: 500;">View Project <i
+                            class='bx bx-right-arrow-alt'></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Section -->
+    <section class="project-section">
         <div class="container" style="max-width: 800px;">
-            <div class="glass-card fade-in delay-300" style="padding: 3rem;">
-
-                <h2 style="color: var(--text-primary); margin-bottom: 1.5rem;">Why Your CEO Doesn't Care About
-                    Perplexity</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.8;">
-                    In early 2024, I sat in a boardroom where an engineering lead pitched a new Llama-3 based chatbot.
-                    They showed impressive Hugging Face leaderboard scores.
-                    The CMO asked one question: <em>"Can you guarantee it won't recommend our competitor?"</em>
-                    Silence.
-                </p>
-
-                <h3 style="color: #fff; margin-bottom: 1rem;">Designing Business-First Metrics</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                    To cross the chasm from "cool demo" to "production tool," we need to engineer frameworks that
-                    measure <strong>Faithfulness</strong> and <strong>Answer Relevancy</strong>.
-                    Frameworks like <strong>RAGAs</strong> (Retrieval Augmented Generation Assessment) are becoming the
-                    gold standard.
-                </p>
-
-                <div
-                    style="background: rgba(0, 229, 255, 0.05); border-left: 4px solid var(--accent); padding: 1.5rem; margin-bottom: 2rem; border-radius: 0 8px 8px 0;">
-                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">The "LLM-as-a-Judge" Paradigm</h4>
-                    <p style="font-size: 0.95rem; color: #ccc;">
-                        We can't rely on human evaluation at scale. The solution is using a stronger model (e.g., GPT-4
-                        or Claude 3 Opus) to evaluate the outputs of smaller, faster models (e.g., Haiku or Llama 3 8B).
-                        This automated pipeline allows us to run regression tests on "tone," "safety," and "brand
-                        alignment" with every commit.
-                    </p>
+            <div class="glass-card fade-in" style="text-align: center;">
+                <h3 style="color: #fff; margin-bottom: 1rem;">Found this useful?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Share it with your network</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://gabrielordonez.com/blog/llm-trust.html"
+                        target="_blank" class="btn btn-outline">
+                        <i class='bx bxl-linkedin'></i> Share on LinkedIn
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?text=The%20Trust%20Gap%20in%20GenAI%20-%20LLM%20Evaluation&url=https://gabrielordonez.com/blog/llm-trust.html"
+                        target="_blank" class="btn btn-outline">
+                        <i class='bx bxl-twitter'></i> Share on X
+                    </a>
                 </div>
-
-                <h3 style="color: #fff; margin-bottom: 1rem;">Cost Optimization via Evaluation</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                    Rigorous eval frameworks also unlock cost savings.
-                    By benchmarking prompt performance, I was able to prove that for 80% of our queries, a smaller,
-                    cheaper model (Claude Instant) performed identically to the flagship model, optimizing our token
-                    usage costs by <strong>25%</strong>.
-                </p>
-
-                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0;">
-
-                <div style="display: flex; gap: 1rem;">
-                    <a href="../index.html#projects" class="btn btn-primary">See My Evaluation Work</a>
-                </div>
-
             </div>
         </div>
     </section>
@@ -108,10 +377,18 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Gabriel Ordonez Hernandez.</p>
+            <p>&copy; 2025 Gabriel Ordonez Hernandez. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://linkedin.com/in/gordonez" target="_blank" aria-label="LinkedIn"><i
+                        class='bx bxl-linkedin-square'></i></a>
+                <a href="https://github.com/gogabrielordonez" target="_blank" aria-label="GitHub"><i
+                        class='bx bxl-github'></i></a>
+                <a href="mailto:go@gabrielordonez.com" aria-label="Email"><i class='bx bx-envelope'></i></a>
+            </div>
         </div>
     </footer>
 
+    <script src="../script.js"></script>
 </body>
 
 </html>
