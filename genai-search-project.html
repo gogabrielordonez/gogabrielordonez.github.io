@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI Semantic Search | Gabriel Ordonez</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Gabriel Ordonez</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
+            <h1>GenAI Semantic Search</h1>
+            <p class="project-subtitle">Full-Stack Vector Database Application with Streamlit</p>
+            <div class="project-meta">
+                <span class="meta-item">
+                    <strong>Role:</strong> Full-Stack AI Engineer
+                </span>
+                <span class="meta-item">
+                    <strong>Duration:</strong> 2024
+                </span>
+                <span class="meta-item">
+                    <strong>Type:</strong> End-to-End Application
+                </span>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/gogabrielordonez/genai-semantic-search" class="btn btn-primary" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution -->
+    <section class="project-section">
+        <div class="container">
+            <div class="two-column">
+                <div class="column">
+                    <h2>The Challenge</h2>
+                    <p>Traditional keyword-based search fails when users don't know exact terminology. Enterprise systems needed a way to find documents by <strong>meaning</strong>, not just matching words.</p>
+                    <p>Additionally, teams needed flexibility to choose between local development (FAISS) and production-scale cloud solutions (Pinecone) without rewriting application code.</p>
+                    <ul class="challenge-list">
+                        <li>Keyword search misses semantically similar content</li>
+                        <li>No unified interface for different vector databases</li>
+                        <li>High API costs for embedding generation</li>
+                        <li>Complex setup for non-technical stakeholders</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h2>The Solution</h2>
+                    <p>Built a <strong>full-stack semantic search application</strong> with a clean abstraction layer that supports multiple vector stores and embedding providers.</p>
+                    <p>The solution includes an interactive Streamlit dashboard for document indexing, semantic search, and real-time analytics—making AI-powered search accessible to all users.</p>
+                    <ul class="solution-list">
+                        <li>Vector store abstraction for FAISS and Pinecone</li>
+                        <li>Embedding service with intelligent caching</li>
+                        <li>Streamlit UI for intuitive interaction</li>
+                        <li>Real-time performance analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="project-section bg-dark">
+        <div class="container">
+            <h2>System Architecture</h2>
+            <div class="architecture-diagram">
+                <pre class="code-block">
+┌─────────────────────────────────────────────────────────────────────┐
+│                      STREAMLIT UI (app.py)                          │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────────────────┐  │
+│  │    Search    │  │    Index     │  │       Analytics          │  │
+│  │     Tab      │  │     Tab      │  │         Tab              │  │
+│  └──────────────┘  └──────────────┘  └──────────────────────────┘  │
+└────────────────────────────┬────────────────────────────────────────┘
+                             │
+┌────────────────────────────▼────────────────────────────────────────┐
+│                  SEMANTIC SEARCH ENGINE                              │
+│  ┌────────────────────────────────────────────────────────────────┐ │
+│  │  • Document Indexing    • Batch Processing                     │ │
+│  │  • Similarity Search    • Statistics Tracking                  │ │
+│  └────────────────────────────────────────────────────────────────┘ │
+└───────────┬─────────────────────────────────────┬───────────────────┘
+            │                                     │
+┌───────────▼───────────┐           ┌─────────────▼─────────────────┐
+│   EMBEDDING SERVICE   │           │   VECTOR STORE ABSTRACTION    │
+│  ┌─────────────────┐  │           │  ┌───────────┐ ┌───────────┐  │
+│  │ OpenAI          │  │           │  │   FAISS   │ │ Pinecone  │  │
+│  │ Ada-002 / 3.0   │  │           │  │  (Local)  │ │  (Cloud)  │  │
+│  ├─────────────────┤  │           │  │           │ │           │  │
+│  │ Sentence        │  │           │  │ • Free    │ │ • Managed │  │
+│  │ Transformers    │  │           │  │ • Fast    │ │ • Scalable│  │
+│  ├─────────────────┤  │           │  │ • Dev     │ │ • Prod    │  │
+│  │ Mock (Testing)  │  │           │  └───────────┘ └───────────┘  │
+│  └─────────────────┘  │           └───────────────────────────────┘
+│  ┌─────────────────┐  │
+│  │  LRU Cache      │  │
+│  │  (Cost Savings) │  │
+│  └─────────────────┘  │
+└───────────────────────┘</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="project-section">
+        <div class="container">
+            <h2>Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li><strong>Streamlit</strong> - Interactive web dashboard</li>
+                        <li><strong>Plotly</strong> - Real-time analytics charts</li>
+                        <li><strong>Custom CSS</strong> - Dark theme styling</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>Vector Databases</h3>
+                    <ul>
+                        <li><strong>FAISS</strong> - Local, high-speed similarity search</li>
+                        <li><strong>Pinecone</strong> - Cloud-native, serverless vectors</li>
+                        <li><strong>Factory Pattern</strong> - Seamless provider switching</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>Embeddings</h3>
+                    <ul>
+                        <li><strong>OpenAI</strong> - text-embedding-3-small (1536d)</li>
+                        <li><strong>Sentence Transformers</strong> - all-MiniLM-L6-v2 (384d)</li>
+                        <li><strong>Mock Provider</strong> - Deterministic testing</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li><strong>Python 3.9+</strong> - Core language</li>
+                        <li><strong>NumPy</strong> - Vector operations</li>
+                        <li><strong>Dataclasses</strong> - Type-safe models</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Highlights -->
+    <section class="project-section bg-dark">
+        <div class="container">
+            <h2>Implementation Highlights</h2>
+
+            <div class="code-highlight">
+                <h3>Vector Store Abstraction</h3>
+                <p>Clean interface enabling seamless switching between FAISS and Pinecone:</p>
+                <pre class="code-block"><code>class VectorStoreBase(ABC):
+    """Abstract base class for vector store implementations"""
+
+    @abstractmethod
+    def add_documents(self, documents: List[Document]) -> int:
+        """Add documents to the vector store"""
+        pass
+
+    @abstractmethod
+    def search(self, query_embedding: List[float], top_k: int = 5) -> List[SearchResult]:
+        """Search for similar documents"""
+        pass
+
+class VectorStoreFactory:
+    @staticmethod
+    def create(provider: str = "faiss", dimension: int = 1536, **kwargs) -> VectorStoreBase:
+        if provider.lower() == "faiss":
+            return FAISSVectorStore(dimension=dimension, **kwargs)
+        elif provider.lower() == "pinecone":
+            return PineconeVectorStore(dimension=dimension, **kwargs)
+        else:
+            raise ValueError(f"Unknown provider: {provider}")</code></pre>
+            </div>
+
+            <div class="code-highlight">
+                <h3>Embedding Service with Caching</h3>
+                <p>Intelligent caching reduces API costs by avoiding redundant embedding calls:</p>
+                <pre class="code-block"><code>class EmbeddingService:
+    def __init__(self, provider: str = "mock", cache_enabled: bool = True):
+        self.cache_enabled = cache_enabled
+        self.cache: Dict[str, List[float]] = {}
+        self.stats = {"hits": 0, "misses": 0, "total_tokens": 0}
+
+    def embed(self, text: str) -> List[float]:
+        cache_key = hashlib.md5(text.encode()).hexdigest()
+
+        if self.cache_enabled and cache_key in self.cache:
+            self.stats["hits"] += 1
+            return self.cache[cache_key]
+
+        self.stats["misses"] += 1
+        result = self.provider.embed(text)
+
+        if self.cache_enabled:
+            self.cache[cache_key] = result.embedding
+
+        return result.embedding</code></pre>
+            </div>
+
+            <div class="code-highlight">
+                <h3>Semantic Search Pipeline</h3>
+                <p>End-to-end search with timing metrics:</p>
+                <pre class="code-block"><code>def search(self, query: str, top_k: int = 5, min_score: float = 0.0) -> SearchResponse:
+    # Generate query embedding
+    embed_start = time.perf_counter()
+    query_embedding = self.embedding_service.embed(query)
+    embed_time = (time.perf_counter() - embed_start) * 1000
+
+    # Search vector store
+    search_start = time.perf_counter()
+    results = self.vector_store.search(query_embedding, top_k=top_k)
+    search_time = (time.perf_counter() - search_start) * 1000
+
+    # Filter by minimum score
+    if min_score > 0:
+        results = [r for r in results if r.score >= min_score]
+
+    return SearchResponse(
+        query=query,
+        results=results,
+        total_results=len(results),
+        search_time_ms=round(search_time, 2),
+        embedding_time_ms=round(embed_time, 2)
+    )</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance -->
+    <section class="project-section">
+        <div class="container">
+            <h2>Performance Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">&lt;10ms</div>
+                    <div class="metric-label">FAISS Search Latency</div>
+                    <div class="metric-detail">Local in-memory search</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">1000+</div>
+                    <div class="metric-label">Documents/Second</div>
+                    <div class="metric-detail">Batch indexing speed</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">40%</div>
+                    <div class="metric-label">Cost Reduction</div>
+                    <div class="metric-detail">Via embedding cache</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">Billions</div>
+                    <div class="metric-label">Vector Scale</div>
+                    <div class="metric-detail">With Pinecone cloud</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="project-section bg-dark">
+        <div class="container">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Semantic Search</h3>
+                    <p>Find documents by meaning using state-of-the-art embedding models. Supports natural language queries like "How do neural networks learn?"</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Provider Switching</h3>
+                    <p>Seamlessly switch between FAISS (local/free) and Pinecone (cloud/scalable) without changing application code.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Smart Caching</h3>
+                    <p>Intelligent embedding cache reduces API costs by avoiding redundant calls for previously seen content.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-Time Analytics</h3>
+                    <p>Live dashboard showing search latency, cache hit rates, document counts, and system statistics.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📥</div>
+                    <h3>Bulk Import</h3>
+                    <p>Upload JSON files with thousands of documents for batch processing and indexing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏷️</div>
+                    <h3>Metadata Support</h3>
+                    <p>Attach categories, tags, and custom metadata to documents for enhanced filtering and organization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Decisions -->
+    <section class="project-section">
+        <div class="container">
+            <h2>Technical Decisions</h2>
+            <div class="decisions-list">
+                <div class="decision-item">
+                    <h3>Why Abstract Factory Pattern for Vector Stores?</h3>
+                    <p>The factory pattern allows runtime selection of vector store providers. Development uses FAISS (free, local, fast iteration), while production deploys to Pinecone (managed, scalable, reliable). Same codebase, different configurations.</p>
+                </div>
+                <div class="decision-item">
+                    <h3>Why Multiple Embedding Providers?</h3>
+                    <p>OpenAI embeddings offer best-in-class quality but have API costs. Sentence Transformers run locally for privacy-sensitive use cases. Mock embeddings enable deterministic testing without network calls.</p>
+                </div>
+                <div class="decision-item">
+                    <h3>Why Streamlit for the Frontend?</h3>
+                    <p>Streamlit enables rapid prototyping with pure Python—no JavaScript required. Perfect for data-centric applications where the focus is on functionality over complex UI. Built-in state management and caching complement the backend architecture.</p>
+                </div>
+                <div class="decision-item">
+                    <h3>Why L2 Distance for FAISS?</h3>
+                    <p>L2 (Euclidean) distance works well with normalized embeddings and provides intuitive similarity scores. For production with Pinecone, cosine similarity is used as it's optimized for their infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="project-section bg-dark">
+        <div class="container">
+            <h2>Results & Impact</h2>
+            <div class="results-content">
+                <div class="result-item">
+                    <h3>Production-Ready Architecture</h3>
+                    <p>Clean separation of concerns enables independent scaling of embedding generation, vector storage, and search logic. The abstraction layer means infrastructure changes don't require application rewrites.</p>
+                </div>
+                <div class="result-item">
+                    <h3>Developer Experience</h3>
+                    <p>Simple API with sensible defaults. Index a document in one line: <code>engine.index_document("Your text here")</code>. Search with natural language: <code>engine.search("machine learning basics")</code>.</p>
+                </div>
+                <div class="result-item">
+                    <h3>Cost Optimization</h3>
+                    <p>Embedding cache eliminates redundant API calls. FAISS option provides zero-cost development. Batch processing reduces per-document overhead for large imports.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="project-section">
+        <div class="container cta-section">
+            <h2>Explore the Code</h2>
+            <p>Full source code with documentation available on GitHub.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/gogabrielordonez/genai-semantic-search" class="btn btn-primary" target="_blank">View Repository</a>
+                <a href="index.html#projects" class="btn btn-secondary">Back to Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Gabriel Ordonez. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

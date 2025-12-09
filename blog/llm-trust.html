@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Trust Gap | Gabriel Ordonez</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-logo">
+                G<span class="text-gradient">O</span>.
+            </a>
+            <a href="../index.html#home" class="btn btn-outline nav-cta">Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Blog Content -->
+    <section class="hero" style="min-height: 40vh; padding-top: 150px;">
+        <div class="container">
+            <span class="badge" style="margin-bottom: 1rem;">Models & Ethics</span>
+            <h1 class="fade-in">The Trust Gap: <br /><span class="text-gradient">Engineering Eval Frameworks for
+                    GenAI</span></h1>
+            <p class="fade-in delay-100" style="color: var(--text-secondary); max-width: 700px;">
+                Moving beyond academic benchmarks (MMLU) to business-centric metrics that actually matter for enterprise
+                adoption.
+            </p>
+            <div class="fade-in delay-200"
+                style="margin-top: 1rem; display: flex; align-items: center; gap: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                <img src="https://ui-avatars.com/api/?name=Gabriel+Ordonez&background=3d5afe&color=fff&rounded=true"
+                    alt="Author" style="width: 40px; height: 40px;">
+                <span>Gabriel Ordonez</span>
+                <span>•</span>
+                <span>Dec 8, 2025</span>
+                <span>•</span>
+                <span>6 min read</span>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding-top: 0;">
+        <div class="container" style="max-width: 800px;">
+            <div class="glass-card fade-in delay-300" style="padding: 3rem;">
+
+                <h2 style="color: var(--text-primary); margin-bottom: 1.5rem;">Why Your CEO Doesn't Care About
+                    Perplexity</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.8;">
+                    In early 2024, I sat in a boardroom where an engineering lead pitched a new Llama-3 based chatbot.
+                    They showed impressive Hugging Face leaderboard scores.
+                    The CMO asked one question: <em>"Can you guarantee it won't recommend our competitor?"</em>
+                    Silence.
+                </p>
+
+                <h3 style="color: #fff; margin-bottom: 1rem;">Designing Business-First Metrics</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    To cross the chasm from "cool demo" to "production tool," we need to engineer frameworks that
+                    measure <strong>Faithfulness</strong> and <strong>Answer Relevancy</strong>.
+                    Frameworks like <strong>RAGAs</strong> (Retrieval Augmented Generation Assessment) are becoming the
+                    gold standard.
+                </p>
+
+                <div
+                    style="background: rgba(0, 229, 255, 0.05); border-left: 4px solid var(--accent); padding: 1.5rem; margin-bottom: 2rem; border-radius: 0 8px 8px 0;">
+                    <h4 style="color: var(--accent); margin-bottom: 0.5rem;">The "LLM-as-a-Judge" Paradigm</h4>
+                    <p style="font-size: 0.95rem; color: #ccc;">
+                        We can't rely on human evaluation at scale. The solution is using a stronger model (e.g., GPT-4
+                        or Claude 3 Opus) to evaluate the outputs of smaller, faster models (e.g., Haiku or Llama 3 8B).
+                        This automated pipeline allows us to run regression tests on "tone," "safety," and "brand
+                        alignment" with every commit.
+                    </p>
+                </div>
+
+                <h3 style="color: #fff; margin-bottom: 1rem;">Cost Optimization via Evaluation</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                    Rigorous eval frameworks also unlock cost savings.
+                    By benchmarking prompt performance, I was able to prove that for 80% of our queries, a smaller,
+                    cheaper model (Claude Instant) performed identically to the flagship model, optimizing our token
+                    usage costs by <strong>25%</strong>.
+                </p>
+
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 3rem 0;">
+
+                <div style="display: flex; gap: 1rem;">
+                    <a href="../index.html#projects" class="btn btn-primary">See My Evaluation Work</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Gabriel Ordonez Hernandez.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

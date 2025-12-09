@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Insights | Gabriel Ordonez</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                G<span class="text-gradient">O</span>.
+            </a>
+            <a href="index.html#home" class="btn btn-outline nav-cta">Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="hero" style="min-height: 50vh; padding-top: 150px;">
+        <div class="container">
+            <h1 class="fade-in">Research & <span class="text-gradient">Insights</span></h1>
+            <p class="fade-in delay-100" style="color: var(--text-secondary); max-width: 600px;">
+                Analyzing the intersection of Distributed Systems and Generative AI.
+                Focusing on real-world implementation challenges: latency, evaluation, and operational rigour.
+            </p>
+        </div>
+
+        <div
+            style="position: absolute; top: 10%; right: 5%; width: 200px; height: 200px; background: var(--accent); filter: blur(100px); opacity: 0.1; border-radius: 50%; z-index: -1;">
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section style="padding-top: 0; min-height: 50vh;">
+        <div class="container">
+            <div class="projects-grid">
+
+                <!-- Article 1 -->
+                <a href="blog/rag-latency.html" class="glass-card fade-in delay-200"
+                    style="text-decoration: none; display: block; border-left: 4px solid var(--primary);">
+                    <div style="margin-bottom: 1rem;">
+                        <span class="badge">RAG Optimization</span>
+                        <span style="color: var(--text-secondary); font-size: 0.85rem; margin-left: 1rem;">Dec 8,
+                            2025</span>
+                    </div>
+                    <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">Latency is the New Accuracy</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Why high-accuracy retrieval means nothing if your users leave before the answer loads.
+                        Techniques from Cache-Augmented Generation (CAG) to Hybrid Search.
+                    </p>
+                    <span style="color: var(--primary); font-weight: 600;">Read Article <i
+                            class='bx bx-right-arrow-alt'></i></span>
+                </a>
+
+                <!-- Article 2 -->
+                <a href="blog/llm-trust.html" class="glass-card fade-in delay-300"
+                    style="text-decoration: none; display: block; border-left: 4px solid var(--accent);">
+                    <div style="margin-bottom: 1rem;">
+                        <span class="badge" style="border-color: var(--accent); color: var(--accent);">Evaluation</span>
+                        <span style="color: var(--text-secondary); font-size: 0.85rem; margin-left: 1rem;">Dec 8,
+                            2025</span>
+                    </div>
+                    <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">The Trust Gap in GenAI</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Moving beyond academic benchmarks (MMLU) to business-centric metrics. Implementing
+                        "LLM-as-a-Judge" to guarantee brand safety.
+                    </p>
+                    <span style="color: var(--accent); font-weight: 600;">Read Article <i
+                            class='bx bx-right-arrow-alt'></i></span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Gabriel Ordonez Hernandez.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
