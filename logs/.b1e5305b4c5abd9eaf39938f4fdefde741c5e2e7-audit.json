@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/gabriel/Projects/gogabrielordonez.github.io/logs/.b1e5305b4c5abd9eaf39938f4fdefde741c5e2e7-audit.json",
+    "files": [
+        {
+            "date": 1765817731405,
+            "name": "/Users/gabriel/Projects/gogabrielordonez.github.io/logs/mcp-puppeteer-2025-12-15.log",
+            "hash": "c613b94468503db3749b4e872f4ca451578acf25d6854d558e8ed15a7736ce8a"
+        }
+    ],
+    "hashType": "sha256"
+}
