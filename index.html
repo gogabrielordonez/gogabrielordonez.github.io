@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriel Ordonez | AI Infrastructure & Model Operations</title>
+    <title>Gabriel Ordonez | I Build & Run Production AI Systems</title>
     <meta name="description"
-        content="Technical Program Manager specializing in AI Infrastructure, Model Operations, and Distributed Systems. Portfolio of Gabriel Ordonez.">
+        content="Gabriel Ordonez ships production AI systems — a 24/7 multilingual AI news channel, an OSINT breach monitor, and open-source local agentic coding tools — and teaches enterprise leaders to do the same.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,10 +40,10 @@
 
             <div class="nav-menu" id="navMenu">
                 <a href="#about" class="nav-link">About</a>
+                <a href="#live-lab" class="nav-link">Live Lab</a>
                 <a href="#experience" class="nav-link">Experience</a>
-                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#case-studies" class="nav-link">Case Studies</a>
                 <a href="#github-repos" class="nav-link">Repos</a>
-                <a href="#blog" class="nav-link">Blog</a>
                 <a href="mailto:go@gabrielordonez.com" class="btn btn-outline nav-cta">Contact</a>
             </div>
         </div>
@@ -54,25 +54,22 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badges fade-in">
-                    <span class="badge">AI Infrastructure</span>
-                    <span class="badge">Model Operations</span>
-                    <span class="badge">GenAI</span>
+                    <span class="badge">Builder · Operator</span>
+                    <span class="badge">Production GenAI</span>
+                    <span class="badge">AI Strategy</span>
                 </div>
                 <h1 class="fade-in delay-100">
-                    Building the Bridge Between <br />
-                    <span class="text-gradient">Research & Production</span>
+                    I build &amp; run <span class="text-gradient">production AI systems</span>.<br />
+                    I teach leaders to do the same.
                 </h1>
                 <p class="fade-in delay-200">
-                    I am Gabriel Ordonez Hernandez. A Technical Program Manager with 15+ years delivering large-scale
-                    distributed systems.
-                    Pivoting from high-availability infrastructure to MLOps and GenAI delivery.
+                    I am Gabriel Ordonez, Founder &amp; CEO of Adwaizer. I run a 24/7 multilingual AI news channel, an OSINT breach monitor, and ship open-source local-AI tools — backed by 15+ years of large-scale distributed infrastructure. Slideware is easy. Shipping is the work.
                 </p>
                 <div class="hero-buttons fade-in delay-300">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#live-lab" class="btn btn-primary">See What's Running</a>
+                    <a href="https://adwaizer.com" target="_blank" class="btn btn-outline">Explore Adwaizer</a>
                     <a href="https://linkedin.com/in/gordonez" target="_blank" class="btn btn-outline"><i
                             class='bx bxl-linkedin'></i> LinkedIn</a>
-                    <a href="https://github.com/gogabrielordonez" target="_blank" class="btn btn-outline"><i
-                            class='bx bxl-github'></i> GitHub</a>
                 </div>
             </div>
         </div>
@@ -86,23 +83,162 @@
         </div>
     </section>
 
+    <!-- Stats Strip -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <div class="stat-strip fade-in">
+                <div class="stat-item">
+                    <div class="stat-number text-gradient">24/7</div>
+                    <div class="stat-label">Production AI uptime</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number text-gradient">3</div>
+                    <div class="stat-label">Broadcast languages (EN · ES · FR)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number text-gradient">15+</div>
+                    <div class="stat-label">Years distributed infrastructure</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number text-gradient">1×</div>
+                    <div class="stat-label">Huawei Global Innovation Award</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Lab -->
+    <section id="live-lab" style="background: rgba(255,255,255,0.02);">
+        <div class="container">
+            <h2 class="section-title fade-in">Live <span class="text-gradient">Lab</span></h2>
+            <p class="fade-in delay-100" style="color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 720px;">
+                Production AI systems I build, run, and operate &mdash; not demos. Architectures and outcomes are public; source code stays private.
+            </p>
+
+            <div class="projects-grid">
+
+                <!-- Sunshine (flagship) -->
+                <div class="glass-card fade-in delay-200 lab-card" style="border: 1px solid var(--accent); box-shadow: 0 0 24px rgba(57, 255, 20, 0.12);">
+                    <div class="lab-card-head">
+                        <span class="status-pill status-live"><span class="pulse-dot"></span> Live</span>
+                        <span class="lab-emoji" aria-hidden="true">☀️</span>
+                    </div>
+                    <h3 style="margin-bottom: 0.4rem; color: var(--accent);">Adwaizer Sunshine</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">24/7 multilingual AI news channel on YouTube Live</p>
+                    <ul class="skill-list">
+                        <li>Hourly news drops + daily editorial deep-dive, fully autonomous: RSS ingest &rarr; dedupe &rarr; script &rarr; local TTS &rarr; render &rarr; RTMP broadcast.</li>
+                        <li>EN live stream + ES &amp; FR daily VOD episodes &mdash; one pipeline, three audiences.</li>
+                        <li>Community-replier agent triages YouTube comments and posts in the commenter's language.</li>
+                    </ul>
+                    <div class="lab-card-foot">
+                        <span class="badge">LangGraph</span>
+                        <span class="badge">Kokoro TTS</span>
+                        <span class="badge">RunPod</span>
+                        <span class="badge">RTMP</span>
+                    </div>
+                </div>
+
+                <!-- Dark-web Monitor -->
+                <div class="glass-card fade-in delay-300 lab-card">
+                    <div class="lab-card-head">
+                        <span class="status-pill status-active"><span class="pulse-dot"></span> Active</span>
+                        <span class="lab-emoji" aria-hidden="true">🕳️</span>
+                    </div>
+                    <h3 style="margin-bottom: 0.4rem; color: var(--primary);">Dark-web Monitor</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">OSINT breach scanner with adaptive rescans</p>
+                    <ul class="skill-list">
+                        <li>20+ sources: HIBP, Cavalier, IntelX, GitHub, Telegram, RansomLook, paste sites, and .onion forums via Tor.</li>
+                        <li>Severity-weighted rescan loop: critical targets every 4h, medium every 12h, low every 24h.</li>
+                        <li>pgvector embedding dedup, LangGraph checkpoints, Telegram alerts on severity &ge; 4.</li>
+                    </ul>
+                    <div class="lab-card-foot">
+                        <span class="badge">LangGraph</span>
+                        <span class="badge">pgvector</span>
+                        <span class="badge">Tor</span>
+                        <span class="badge">OSINT</span>
+                    </div>
+                </div>
+
+                <!-- Hello (open source) -->
+                <div class="glass-card fade-in delay-200 lab-card">
+                    <div class="lab-card-head">
+                        <span class="status-pill status-open"><i class='bx bxl-github'></i> Open source</span>
+                        <span class="lab-emoji" aria-hidden="true">👋</span>
+                    </div>
+                    <h3 style="margin-bottom: 0.4rem; color: var(--accent);">Hello</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">100% local agentic coding setup &mdash; no cloud, no API keys, no fees</p>
+                    <ul class="skill-list">
+                        <li>Curated opencode + Ollama configuration: model router, syntax validators, bash guards, context tracker.</li>
+                        <li>20 vendored + original skills, 8 specialized subagents, 11 slash commands.</li>
+                        <li>Hardware-tiered (32GB / 16GB / 8GB) so it runs anywhere from a workstation to a MacBook Air.</li>
+                    </ul>
+                    <div class="lab-card-foot">
+                        <span class="badge">Ollama</span>
+                        <span class="badge">opencode</span>
+                        <span class="badge">Local LLM</span>
+                        <a href="https://github.com/gogabrielordonez/hello" target="_blank" class="project-link" style="color: var(--accent);">View on GitHub <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </div>
+
+                <!-- SolarFocus OS -->
+                <div class="glass-card fade-in delay-200 lab-card">
+                    <div class="lab-card-head">
+                        <span class="status-pill status-open"><i class='bx bxl-github'></i> Open source</span>
+                        <span class="lab-emoji" aria-hidden="true">🌻</span>
+                    </div>
+                    <h3 style="margin-bottom: 0.4rem; color: var(--accent);">SolarFocus OS</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">Desktop Pomodoro with a fully local AI coach &mdash; privacy by design</p>
+                    <ul class="skill-list">
+                        <li>Rust + iced 0.13, cross-platform binaries for macOS (Apple Silicon, Metal-accelerated) and Windows.</li>
+                        <li>Local-only AI stack: SmolLM2-1.7B (GGUF Q4) for coaching, YOLOv8n for phone-distraction detection, DistilBERT INT8 for activity classification.</li>
+                        <li>No cloud, no telemetry, no account &mdash; everything (sessions, summaries, models) stays on the user's machine in SQLite.</li>
+                    </ul>
+                    <div class="lab-card-foot">
+                        <span class="badge">Rust</span>
+                        <span class="badge">iced</span>
+                        <span class="badge">llama.cpp</span>
+                        <span class="badge">ONNX</span>
+                        <a href="https://github.com/Citric88/solarfocus" target="_blank" class="project-link" style="color: var(--accent);">View on GitHub <i class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </div>
+
+                <!-- Lyla -->
+                <div class="glass-card fade-in delay-300 lab-card">
+                    <div class="lab-card-head">
+                        <span class="status-pill status-active"><span class="pulse-dot"></span> Active</span>
+                        <span class="lab-emoji" aria-hidden="true">🛠️</span>
+                    </div>
+                    <h3 style="margin-bottom: 0.4rem; color: var(--primary);">Lyla</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">Project cockpit orchestrating the fleet</p>
+                    <ul class="skill-list">
+                        <li>Raycast-native control surface: each project registers a manifest with services, queries, actions, and risks.</li>
+                        <li>Live status board across LaunchAgents, Docker stacks, and remote pods &mdash; one keypress away.</li>
+                        <li>Multi-tool coordination layer behind every system above.</li>
+                    </ul>
+                    <div class="lab-card-foot">
+                        <span class="badge">Raycast</span>
+                        <span class="badge">LaunchAgents</span>
+                        <span class="badge">Orchestration</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Professional Summary -->
     <section id="about">
         <div class="container">
             <h2 class="section-title fade-in">Professional <span class="text-gradient">Summary</span></h2>
             <div class="glass-card fade-in delay-100" style="margin-top: 2rem;">
                 <p style="font-size: 1.1rem; color: #d0d0e0; margin-bottom: 1.5rem;">
-                    Technical Program Manager with 15+ years delivering large-scale distributed systems, with a
-                    decade-long evolution from heuristic automation (2011) to predictive ML (Huawei Global Innovation
-                    Award, 2017) and GenAI.
+                    As the Founder & CEO of Adwaizer, I am dedicated to bridging the gap between AI hype and real-world execution. I help enterprise leaders build, deploy, and scale actionable AI strategies rather than just talking about them.
                 </p>
                 <p style="font-size: 1.1rem; color: #d0d0e0; margin-bottom: 1.5rem;">
-                    Pivoting from high-availability infrastructure to MLOps and GenAI delivery. Expert at bridging the
-                    gap between research concepts and production stability, managing cross-functional teams across 3
-                    continents, and translating between ML engineers and business stakeholders.
+                    My journey started in global telecommunications, spending 15+ years delivering large-scale distributed systems. With a decade-long evolution from heuristic automation (2011) to predictive ML (Huawei Global Innovation Award, 2017), I developed a profound understanding of what it takes to stabilize chaos in production environments.
                 </p>
                 <p style="font-size: 1.1rem; color: #d0d0e0;">
-                    Thrive in chaotic, fast-paced environments with evolving priorities.
+                    Today, I leverage that deep integration experience to drive the Adwaizer platform, equipping teams with the frameworks, courses, and tools necessary to dominate the emerging GenAI landscape.
                 </p>
             </div>
         </div>
@@ -165,6 +301,20 @@
             <h2 class="section-title fade-in">Professional <span class="text-gradient">Experience</span></h2>
 
             <div class="timeline fade-in delay-100" style="margin-top: 2rem;">
+
+                <!-- Adwaizer -->
+                <div class="timeline-item">
+                    <span class="timeline-date">2024 – Present</span>
+                    <div class="timeline-content glass-card">
+                        <h3 style="color: var(--accent);">Founder & CEO</h3>
+                        <h4>Adwaizer Platform | Remote</h4>
+                        <ul class="skill-list job-details">
+                            <li><strong>AI Strategy & Education:</strong> Directing the Adwaizer educational platform, providing AI strategy courses and tools for enterprise leaders who want to build and deploy at scale.</li>
+                            <li><strong>Production Pipelines:</strong> Architecting end-to-end GenAI workflows, including the MindTraps V12 production dashboard for automated media generation.</li>
+                            <li><strong>Agentic Frameworks:</strong> Deploying human-in-the-loop virtual workforce agents to run operations seamlessly, bridging models and enterprise data.</li>
+                        </ul>
+                    </div>
+                </div>
 
                 <!-- Amdocs -->
                 <div class="timeline-item">
@@ -273,15 +423,31 @@
         </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" style="background: rgba(255,255,255,0.02);">
+    <!-- Case Studies -->
+    <section id="case-studies" style="background: rgba(255,255,255,0.02);">
         <div class="container">
-            <h2 class="section-title fade-in">Independent <span class="text-gradient">AI Projects</span></h2>
+            <h2 class="section-title fade-in">Case <span class="text-gradient">Studies</span></h2>
             <p class="fade-in delay-100" style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 700px;">
-                Hands-on technical development building GenAI systems to stay at the implementation edge.
+                Selected engagements and prior builds &mdash; the techniques behind the Live Lab.
             </p>
 
             <div class="projects-grid">
+
+                <!-- Adwaizer -->
+                <div class="glass-card fade-in delay-200 project-card" style="border: 1px solid var(--accent); box-shadow: 0 0 20px rgba(57, 255, 20, 0.1);">
+                    <h3 style="margin-bottom: 0.5rem; color: var(--accent);">Adwaizer Platform</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">AI Strategy Courses for Leaders Who Build</p>
+                    <ul class="skill-list">
+                        <li>Empowering execs with practical playbooks to actually implement and scale AI.</li>
+                        <li>High-impact courses and tools targeting the enterprise execution gap.</li>
+                    </ul>
+                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+                        <span class="badge">Education</span>
+                        <span class="badge">AI Strategy</span>
+                        <a href="https://adwaizer.com" target="_blank" class="project-link" style="color: var(--primary);">Visit Adwaizer.com <i
+                                class='bx bx-right-arrow-alt'></i></a>
+                    </div>
+                </div>
 
                 <!-- RAG -->
                 <div class="glass-card fade-in delay-200 project-card">
@@ -436,7 +602,7 @@
                 <!-- Blog Card 1 -->
                 <article class="glass-card fade-in delay-200" style="border-left: 4px solid var(--primary);">
                     <div style="margin-bottom: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
-                        <span class="badge">RAG Optimization</span> • Dec 8
+                        <span class="badge">RAG Optimization</span> • Dec 8, 2025
                     </div>
                     <h3 style="margin-bottom: 0.5rem; color: #fff;">
                         <a href="blog/rag-latency.html" style="text-decoration: none;">Latency is the New Accuracy in
@@ -453,7 +619,7 @@
                 <article class="glass-card fade-in delay-300" style="border-left: 4px solid var(--accent);">
                     <div style="margin-bottom: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
                         <span class="badge" style="border-color: var(--accent); color: var(--accent);">Evaluation</span>
-                        • Dec 8
+                        • Dec 8, 2025
                     </div>
                     <h3 style="margin-bottom: 0.5rem; color: #fff;">
                         <a href="blog/llm-trust.html" style="text-decoration: none;">The Trust Gap: Engineering Eval
@@ -472,7 +638,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Gabriel Ordonez Hernandez. All rights reserved.</p>
+            <p>&copy; 2026 Gabriel Ordonez Hernandez. All rights reserved.</p>
             <div class="footer-social">
                 <a href="https://linkedin.com/in/gordonez" target="_blank" aria-label="LinkedIn"><i
                         class='bx bxl-linkedin-square'></i></a>

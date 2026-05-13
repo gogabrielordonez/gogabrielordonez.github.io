@@ -1,13 +1,12 @@
 /* Modern Reset & Base Styles */
 :root {
-    --bg-dark: #0a0a0f;
-    --bg-card: rgba(20, 20, 30, 0.6);
-    --primary: #3d5afe;
-    --accent: #00e5ff;
-    /* Neon Cyan */
+    --bg-dark: #070709;
+    --bg-card: rgba(15, 15, 20, 0.6);
+    --primary: #a855f7; /* Neon Purple */
+    --accent: #39ff14; /* Neon Green */
     --text-primary: #ffffff;
     --text-secondary: #a0a0b0;
-    --gradient-main: linear-gradient(135deg, #3d5afe 0%, #00e5ff 100%);
+    --gradient-main: linear-gradient(135deg, #a855f7 0%, #39ff14 100%);
     --glass-border: 1px solid rgba(255, 255, 255, 0.08);
 
     --font-heading: 'Outfit', sans-serif;
@@ -73,7 +72,7 @@ ul {
 
 .glass-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.15); /* Updated to neon green glow */
     border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -95,14 +94,14 @@ ul {
 
 .btn-primary {
     background: var(--gradient-main);
-    color: #fff;
+    color: #070709; /* Dark text for contrast against bright neon */
     border: none;
-    box-shadow: 0 4px 15px rgba(61, 90, 254, 0.4);
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 229, 255, 0.6);
+    box-shadow: 0 6px 20px rgba(57, 255, 20, 0.6);
 }
 
 .btn-outline {
@@ -112,7 +111,7 @@ ul {
 }
 
 .btn-outline:hover {
-    background: rgba(0, 229, 255, 0.1);
+    background: rgba(57, 255, 20, 0.1); /* Neon Green hover */
 }
 
 /* Section Spacing */
@@ -128,6 +127,13 @@ section {
     position: relative;
     padding-top: 80px;
     /* Header height */
+    /* Blueprint Motif */
+    background-image: 
+        linear-gradient(rgba(7, 7, 9, 0.95), rgba(7, 7, 9, 0.95)),
+        linear-gradient(rgba(168, 85, 247, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168, 85, 247, 0.08) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    background-position: center;
 }
 
 .hero-content {
@@ -154,13 +160,13 @@ section {
 }
 
 .badge {
-    background: rgba(61, 90, 254, 0.1);
+    background: rgba(168, 85, 247, 0.1); /* Neon Purple bg */
     color: var(--accent);
     padding: 0.4rem 1rem;
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
-    border: 1px solid rgba(61, 90, 254, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.3);
 }
 
 /* Animations */
@@ -655,7 +661,7 @@ body.menu-open {
 .timeline {
     position: relative;
     padding-left: 2rem;
-    border-left: 2px solid rgba(61, 90, 254, 0.2);
+    border-left: 2px solid rgba(168, 85, 247, 0.3);
 }
 
 .timeline-item {
@@ -731,7 +737,7 @@ body.menu-open {
 
 .repo-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.15); /* Green neon glow */
     border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -842,4 +848,163 @@ body.menu-open {
 
 .project-link i {
     font-size: 1rem;
+}
+
+/* ========================================
+   STATS STRIP
+   ======================================== */
+.stats-section {
+    padding: 3rem 0 1rem;
+}
+
+.stat-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 0.5rem 0.75rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stat-item:last-child {
+    border-right: none;
+}
+
+@media (max-width: 720px) {
+    .stat-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding-bottom: 1rem;
+    }
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+}
+
+/* ========================================
+   LIVE LAB CARDS
+   ======================================== */
+.lab-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.lab-card .skill-list {
+    flex-grow: 1;
+}
+
+.lab-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.9rem;
+}
+
+.lab-emoji {
+    font-size: 1.6rem;
+    opacity: 0.8;
+}
+
+.lab-card-foot {
+    margin-top: 1.2rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Status pills */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.status-live {
+    color: var(--accent);
+    background: rgba(57, 255, 20, 0.08);
+    border: 1px solid rgba(57, 255, 20, 0.35);
+}
+
+.status-active {
+    color: var(--primary);
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
+.status-open {
+    color: #e0e0e8;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.status-open i {
+    font-size: 0.95rem;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 0 currentColor;
+    animation: pulseDot 2s ease-out infinite;
+}
+
+@keyframes pulseDot {
+    0% {
+        box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(57, 255, 20, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(57, 255, 20, 0);
+    }
+}
+
+.status-active .pulse-dot {
+    animation-name: pulseDotPurple;
+}
+
+@keyframes pulseDotPurple {
+    0% {
+        box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(168, 85, 247, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+    }
 }
