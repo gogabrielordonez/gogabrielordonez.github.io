@@ -283,7 +283,13 @@ def live() -> list[str]:
     problems = []
     for rel in [""] + FR05_PAGES:
         try:
-            with urllib.request.urlopen(SITE + rel, timeout=15) as r:
+            # Named, not Python's default: Cloudflare in front of the site
+            # refuses "Python-urllib" (403) while every crawler that renders
+            # a preview -- Google, LinkedIn, X, Facebook, Slack -- gets 200.
+            req = urllib.request.Request(
+                SITE + rel, headers={"User-Agent": "gabrielordonez-site-check/1.0"}
+            )
+            with urllib.request.urlopen(req, timeout=15) as r:
                 if r.status != 200:
                     problems.append(f"{SITE + rel} answered {r.status}")
         except Exception as e:  # noqa: BLE001 -- any failure is the finding

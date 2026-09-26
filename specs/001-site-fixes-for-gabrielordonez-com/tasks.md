@@ -22,4 +22,4 @@ A ticked task whose check fails turns the project's check red.
 ## Phase 3 — Reachability and verification
 
 - [x] T011 Make every FR-05 page exist, carry a `<title>` and be tracked by git, so GitHub Pages serves it (FR-05). Amended 2026-09-26: `blog/ai-theory-practice.html` is out -- an unpublished draft linked from no page; publishing it is the author's call
-- [ ] T012 Run `python3 tests/check_site.py --all` and make it pass; after the site is pushed, `--all --live` must pass too, fetching every FR-05 URL (FR-08). Amended 2026-09-26 on the walk's advice: without `--live` nothing fetches the URLs SC-05 is about
+- [x] T012 Run `python3 tests/check_site.py --all` and make it pass; after the site is pushed, `--all --live` must pass too, fetching every FR-05 URL (FR-08). Amended 2026-09-26 on the walk's advice: without `--live` nothing fetches the URLs SC-05 is about
