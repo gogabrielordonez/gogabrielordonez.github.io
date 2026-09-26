@@ -241,7 +241,6 @@ FR05_PAGES = [
     "rag-project.html",
     "blog/rag-latency.html",
     "blog/llm-trust.html",
-    "blog/ai-theory-practice.html",
     "genai-search-project.html",
     "llm-eval-project.html",
 ]
