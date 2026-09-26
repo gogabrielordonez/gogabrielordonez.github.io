@@ -91,7 +91,7 @@ def check_T001() -> list[str]:
         problems.append("index.html has no meta description")
     elif not 150 <= len(d) <= 160:
         problems.append(f"index.html meta description is {len(d)} characters, not 150-160")
-    others = [n for n in ("index.htm", "home.html", "default.html") if (ROOT / n).exists()]
+    others = [n for n in ("index.htm", "index.md", "home.html", "default.html") if (ROOT / n).exists()]
     if others:
         problems.append(f"{others} could answer / instead of index.html")
     if p.refresh:
@@ -306,9 +306,11 @@ def check_T012() -> list[str]:
 
 
 def live() -> list[str] | None:
-    """The published pages, fetched. None when the network cannot be reached,
-    which is not a failure of the site and is said as "not run"."""
-    problems, reached = [], False
+    """The published pages, fetched: each must answer 200 with a page that
+    has a <title>. None only when nothing on the internet answers -- that is
+    this machine offline, not the site failing. If another host answers and
+    the site does not, the site is down, and that is a failure."""
+    problems, errors = [], []
     for rel in [""] + FR05_PAGES:
         # Named, not Python's default: Cloudflare in front of the site
         # refuses "Python-urllib" (403) while every crawler that renders a
@@ -316,15 +318,23 @@ def live() -> list[str] | None:
         req = urllib.request.Request(SITE + rel, headers={"User-Agent": "gabrielordonez-site-check/1.0"})
         try:
             with urllib.request.urlopen(req, timeout=15) as r:
-                reached = True
+                body = r.read(200_000).decode("utf-8", "replace")
                 if r.status != 200:
                     problems.append(f"{SITE + rel} answered {r.status}")
+                elif not re.search(r"<title>\s*\S", body, re.I):
+                    problems.append(f"{SITE + rel} answered 200 with no page")
         except urllib.error.HTTPError as e:
-            reached = True
             problems.append(f"{SITE + rel} answered {e.code}")
-        except Exception:  # noqa: BLE001 -- no answer at all: offline
-            continue
-    return problems if reached else None
+        except Exception as e:  # noqa: BLE001 -- no answer from this URL
+            errors.append(f"{SITE + rel} did not answer: {e}")
+    if errors and not problems and len(errors) == len(FR05_PAGES) + 1:
+        # Nothing on the site answered. Offline, or the site is down?
+        try:
+            urllib.request.urlopen(urllib.request.Request(
+                "https://www.github.com/", headers={"User-Agent": "gabrielordonez-site-check/1.0"}), timeout=10)
+        except Exception:  # noqa: BLE001
+            return None
+    return problems + errors
 
 
 def check_T013() -> list[str] | None:
