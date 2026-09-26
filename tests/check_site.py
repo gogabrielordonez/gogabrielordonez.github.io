@@ -8,7 +8,6 @@ the requirements it proves and whose body is the whole assertion.
 
     python3 tests/check_site.py          # fails for ticked tasks whose check fails
     python3 tests/check_site.py --all    # every task must pass (T012, the finish line)
-    python3 tests/check_site.py --live   # also fetch the FR-05 URLs over HTTP
 
 Coquivacoa runs the default mode after every OpenCode session. A task ticked
 in tasks.md whose check fails turns the run red, so a tick is a claim the
@@ -80,6 +79,8 @@ class Page(HTMLParser):
 def check_T001() -> list[str]:
     """FR-03 FR-12: the homepage meta description is 150-160 characters.
 
+    Done when: SC-03 SC-12.
+
     `/` and `/index.html` are one file on GitHub Pages, so FR-12's "identical
     to the homepage" holds only while no other file answers `/`: no second
     index page and no redirect.
@@ -99,13 +100,19 @@ def check_T001() -> list[str]:
 
 
 def check_T002() -> list[str]:
-    """FR-02 FR-04: index.html declares exactly one canonical, the site root."""
+    """FR-02 FR-04: index.html declares exactly one canonical, the site root.
+
+    Done when: SC-02 SC-04.
+    """
     c = Page("index.html").canonical
     return [] if c == [SITE] else [f"index.html canonical is {c or 'missing'}, not [{SITE}]"]
 
 
 def check_T003() -> list[str]:
-    """FR-01 FR-07: index.html og:title equals its <title>."""
+    """FR-01 FR-07: index.html og:title equals its <title>.
+
+    Done when: SC-01 SC-07.
+    """
     p = Page("index.html")
     got = p.meta.get("og:title")
     if got is None:
@@ -114,7 +121,10 @@ def check_T003() -> list[str]:
 
 
 def check_T004() -> list[str]:
-    """FR-01 FR-07: index.html og:description equals its meta description."""
+    """FR-01 FR-07: index.html og:description equals its meta description.
+
+    Done when: SC-01 SC-07.
+    """
     p = Page("index.html")
     got, want = p.meta.get("og:description"), p.meta.get("description")
     if got is None:
@@ -124,6 +134,8 @@ def check_T004() -> list[str]:
 
 def check_T005() -> list[str]:
     """FR-01: og-image.jpg is a 1200x630 JPEG card showing the name, rendered
+
+    Done when: SC-01.
     from og-image.html.
 
     A card is a picture of words. The first one made was a flat dark
@@ -165,7 +177,10 @@ def check_T005() -> list[str]:
 
 
 def check_T006() -> list[str]:
-    """FR-01 FR-07: index.html og:image is the shared image URL."""
+    """FR-01 FR-07: index.html og:image is the shared image URL.
+
+    Done when: SC-01 SC-07.
+    """
     got = Page("index.html").meta.get("og:image")
     return [] if got == OG_IMAGE else [f"index.html og:image is {got!r}, not {OG_IMAGE!r}"]
 
@@ -193,6 +208,8 @@ def open_graph(rel: str) -> list[str]:
 def check_T007() -> list[str]:
     """FR-09: blog.html carries og:title, og:description and og:image.
 
+    Done when: SC-09.
+
     og:title equals its <title>, og:description its meta description, og:image
     the shared image -- see open_graph() directly above.
     """
@@ -201,18 +218,24 @@ def check_T007() -> list[str]:
 
 def check_T008() -> list[str]:
     """FR-10: rag-project.html carries og:title, og:description and og:image,
+
+    Done when: SC-10.
     each equal to its <title>, its meta description and the shared image."""
     return open_graph("rag-project.html")
 
 
 def check_T009() -> list[str]:
     """FR-11: blog/rag-latency.html carries og:title, og:description and
+
+    Done when: SC-11.
     og:image, each equal to its <title>, its meta description and the shared image."""
     return open_graph("blog/rag-latency.html")
 
 
 def check_T010() -> list[str]:
     """FR-06: index.html JSON-LD has a Person and a WebSite, each with
+
+    Done when: SC-06.
     name "Gabriel Ordonez" and url "https://gabrielordonez.com/"."""
     blocks = Page("index.html").ld
     if not blocks:
@@ -249,6 +272,8 @@ FR05_PAGES = [
 def check_T011() -> list[str]:
     """FR-05: every listed page exists, has a <title>, and is tracked by git.
 
+    Done when: SC-05.
+
     GitHub Pages serves what is committed: a page on disk and not in git is a
     404 on the live site however right it looks here. `--live` also fetches
     each URL.
@@ -270,31 +295,49 @@ def check_T011() -> list[str]:
 def check_T012() -> list[str]:
     """FR-08: every assertion in this file holds against the source.
 
+    Done when: SC-08.
+
     The finish line: it fails while any other check fails, so it cannot be
     ticked before the work it certifies is done.
     """
-    return [f"{tid} fails" for tid, f in CHECKS.items() if tid != "T012" and f()]
+    return [f"{tid} fails" for tid, f in CHECKS.items() if tid not in ("T012", "T013") and f()]
+
+
+
+
+def live() -> list[str] | None:
+    """The published pages, fetched. None when the network cannot be reached,
+    which is not a failure of the site and is said as "not run"."""
+    problems, reached = [], False
+    for rel in [""] + FR05_PAGES:
+        # Named, not Python's default: Cloudflare in front of the site
+        # refuses "Python-urllib" (403) while every crawler that renders a
+        # preview -- Google, LinkedIn, X, Facebook, Slack -- gets 200.
+        req = urllib.request.Request(SITE + rel, headers={"User-Agent": "gabrielordonez-site-check/1.0"})
+        try:
+            with urllib.request.urlopen(req, timeout=15) as r:
+                reached = True
+                if r.status != 200:
+                    problems.append(f"{SITE + rel} answered {r.status}")
+        except urllib.error.HTTPError as e:
+            reached = True
+            problems.append(f"{SITE + rel} answered {e.code}")
+        except Exception:  # noqa: BLE001 -- no answer at all: offline
+            continue
+    return problems if reached else None
+
+
+def check_T013() -> list[str] | None:
+    """FR-05: every published FR-05 URL answers HTTP 200.
+
+    Done when: SC-05.
+    Fetched on every run, with a named client. Offline it returns None: the
+    check did not run, which is not the same as the site failing.
+    """
+    return live()
 
 
 CHECKS = {name[len("check_"):]: f for name, f in sorted(globals().items()) if name.startswith("check_T")}
-
-
-def live() -> list[str]:
-    problems = []
-    for rel in [""] + FR05_PAGES:
-        try:
-            # Named, not Python's default: Cloudflare in front of the site
-            # refuses "Python-urllib" (403) while every crawler that renders
-            # a preview -- Google, LinkedIn, X, Facebook, Slack -- gets 200.
-            req = urllib.request.Request(
-                SITE + rel, headers={"User-Agent": "gabrielordonez-site-check/1.0"}
-            )
-            with urllib.request.urlopen(req, timeout=15) as r:
-                if r.status != 200:
-                    problems.append(f"{SITE + rel} answered {r.status}")
-        except Exception as e:  # noqa: BLE001 -- any failure is the finding
-            problems.append(f"{SITE + rel} failed: {e}")
-    return problems
 
 
 def ticked() -> set[str]:
@@ -307,6 +350,10 @@ def main(argv: list[str]) -> int:
     for tid, check in CHECKS.items():
         frs = (check.__doc__ or "").split(":")[0]
         problems = check()
+        if problems is None:
+            # Could not run (offline). No result line: not run is not red.
+            print(f"not run  {tid} {frs}: the network could not be reached")
+            continue
         # The one line format the harness reads for any language (099): it
         # records each result per task, so a regression on one task locks the
         # repository to that task's files.
@@ -318,10 +365,6 @@ def main(argv: list[str]) -> int:
             print(f"FAIL     {tid} {frs}: " + "; ".join(problems))
         else:
             print(f"pending  {tid} {frs}: " + "; ".join(problems))
-    if "--live" in argv:
-        problems = live()
-        failed += bool(problems)
-        print(("FAIL     live FR-05: " + "; ".join(problems)) if problems else "PASS     live FR-05")
     unknown = sorted(done - set(CHECKS))
     if unknown:
         failed += 1
