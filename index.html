@@ -141,6 +141,50 @@
 
             <div class="projects-grid">
 
+                <!-- Coquivacoa (flagship) -->
+                <div class="glass-card fade-in delay-200 lab-card" style="border: 1px solid var(--accent); box-shadow: 0 0 24px rgba(57, 255, 20, 0.12);">
+                    <div class="lab-card-head">
+                        <span class="status-pill status-active"><span class="pulse-dot"></span> Active</span>
+                        <span class="lab-emoji" aria-hidden="true">&#x1F980;</span>
+                    </div>
+                    <h3 style="margin-bottom: 0.4rem; color: var(--accent);">Coquivacoa</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">Agent governance OS &mdash; the control plane for AI coding-agent teams</p>
+                    <ul class="skill-list">
+                        <li>Rust supervisor orchestrating governed agent teams (lead / implementation / review seats) through policy gates.</li>
+                        <li>Gates: test-before-source, independent spec-derived tests, red-test-blocks-source, adversarial review &mdash; plus human-in-the-loop approvals.</li>
+                        <li>Per-turn model routing by measured outcomes; per-project and per-seat spend/token accounting.</li>
+                        <li>Eight-stage delivery pipeline: Assess &rarr; Ideas &rarr; Approve &rarr; Spec &rarr; Plan &rarr; Tasks &rarr; Build &rarr; Review.</li>
+                    </ul>
+                    <div class="lab-card-foot">
+                        <span class="badge">Rust</span>
+                        <span class="badge">MCP</span>
+                        <span class="badge">Governance</span>
+                        <span class="badge">FinOps</span>
+                    </div>
+                </div>
+
+                <!-- Acuarela -->
+                <div class="glass-card fade-in delay-200 lab-card">
+                    <div class="lab-card-head">
+                        <span class="status-pill status-live"><span class="pulse-dot"></span> Live</span>
+                        <span class="lab-emoji" aria-hidden="true">&#x1F3A8;</span>
+                    </div>
+                    <h3 style="margin-bottom: 0.4rem; color: var(--primary);">Acuarela</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #ccc;">Production AI product photography for Shopify merchants</p>
+                    <ul class="skill-list">
+                        <li>One on-model garment photo &rarr; photorealistic color variants, powered by a fal.ai recolor engine.</li>
+                        <li>Next.js 16 + TypeScript + Drizzle/SQLite, with Shopify App Pricing billing built in.</li>
+                        <li>Every generation records model, cost, latency, and seed &mdash; full AI observability via Langfuse.</li>
+                        <li>Spec-driven, multi-agent delivery: 119 specifications, Claude Code + coding agents in git worktrees.</li>
+                    </ul>
+                    <div class="lab-card-foot">
+                        <span class="badge">Next.js</span>
+                        <span class="badge">TypeScript</span>
+                        <span class="badge">fal.ai</span>
+                        <span class="badge">Langfuse</span>
+                    </div>
+                </div>
+
                 <!-- Dark-web Monitor -->
                 <div class="glass-card fade-in delay-300 lab-card">
                     <div class="lab-card-head">
@@ -250,6 +294,17 @@
         </div>
     </section>
 
+    <!-- Fractional AI leadership -->
+    <section id="fractional">
+        <div class="container">
+            <h2 class="section-title fade-in">Fractional AI <span class="text-gradient">Leadership</span></h2>
+            <p class="fade-in delay-100" style="color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 720px;">
+                Advisory and hands-on delivery for organizations adopting generative AI &mdash; strategy, pilots, and production rollouts.
+            </p>
+            <a href="mailto:go@gabrielordonez.com" class="btn btn-primary fade-in delay-200">Start a conversation</a>
+        </div>
+    </section>
+
     <!-- Professional Summary -->
     <section id="about">
         <div class="container">
@@ -346,7 +401,7 @@
                         <h4>Adwaizer Platform | Remote</h4>
                         <ul class="skill-list job-details">
                             <li><strong>AI Strategy & Education:</strong> Directing the Adwaizer educational platform, providing AI strategy courses and tools for enterprise leaders who want to build and deploy at scale.</li>
-                            <li><strong>Production Pipelines:</strong> Architecting end-to-end GenAI workflows: RAG pipelines, multi-agent orchestration, and autonomous content automation.</li>
+                            <li><strong>Production Systems:</strong> Ship and operate Acuarela (AI Shopify app for e-commerce product imagery) and Coquivacoa (Rust "agent OS" governing coding-agent teams) — from strategy to production, not slideware.</li>
                             <li><strong>Agentic Frameworks:</strong> Deploying human-in-the-loop virtual workforce agents to run operations seamlessly, bridging models and enterprise data.</li>
                         </ul>
                     </div>
@@ -356,14 +411,14 @@
                 <div class="timeline-item">
                     <span class="timeline-date">2023 – Present</span>
                     <div class="timeline-content glass-card">
-                        <h3>Project Customer Delivery Manager — AI Adoption & Engineering Analytics</h3>
+                        <h3>Project Customer Delivery Manager — AI-Agent QE Automation</h3>
                         <h4>Amdocs (Fortune 500) | Ottawa, ON</h4>
                         <ul class="skill-list job-details">
-                            <li><strong>M365 Copilot Rollout:</strong> Led company-wide deployment of GitHub Copilot, Claude Code, and M365 Copilot across engineering teams — establishing usage standards, shared prompts, and role-based training programs.</li>
-                            <li><strong>AI Adoption Leadership:</strong> Improved sprint success from 60% to 90% in 2 months via data-driven process optimization and AI-assisted workflow automation.</li>
-                            <li><strong>Cross-Functional Execution:</strong> Led 15+ engineers and data architects across Canada, US, and India on AI adoption initiatives.</li>
+                            <li><strong>AI-Agent QE Platform:</strong> Architected and built a custom AI-agent-driven QE automation platform (Python) for T-Mobile's Veloce/RF Hub suite — MCP server, 14+ AI subagents, 19 slash-command workflows, GitLab CI eval gates, orchestrated with Claude Code and Cursor.</li>
+                            <li><strong>Evidence Framework:</strong> Contract-first test evidence — every verdict backed by a live schema-validated database lookup, API capability call, or Splunk probe; 85+ feature test packages across 300+ evidence-capture sessions.</li>
+                            <li><strong>AI Adoption Leadership:</strong> Led 15+ engineers and data architects across Canada, US, and India on AI adoption initiatives, including company-wide Copilot, Claude, and OpenAI rollouts — sprint success improved 60% to 90%.</li>
+                            <li><strong>Enterprise AI Strategy:</strong> Member of the Amdocs GenAI Task Force, shaping enterprise AI strategy and adoption priorities.</li>
                             <li><strong>ROI Analytics:</strong> Built adoption metrics dashboards quantifying developer productivity gains and presenting AI value propositions to C-suite stakeholders.</li>
-                            <li><strong>Power BI / Tableau:</strong> Engineered real-time analytics pipelines (Python, SQL, Jira API) reducing manual reporting by 45%.</li>
                         </ul>
                     </div>
                 </div>
