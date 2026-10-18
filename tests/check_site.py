@@ -527,6 +527,10 @@ def age_SC003() -> list[str]:
     if hit:
         a = max(i for i in range(1, hit + 1) if "<!--" in lines[i - 1])
         b = min(i for i in range(hit, len(lines) + 1) if "-->" in lines[i - 1])
+        # FR-005 is the whole run of comments, e.g. a one-line comment right above
+        # the multi-line one: take every directly preceding one-line comment too.
+        while a > 1 and (not lines[a - 2].strip() or re.fullmatch(r"\s*<!--.*-->\s*", lines[a - 2])):
+            a -= 1
         allowed |= set(range(a, b + 1))
     else:
         problems.append("baseline has no leftover developer comment")
