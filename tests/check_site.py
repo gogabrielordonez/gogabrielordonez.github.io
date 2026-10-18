@@ -471,8 +471,11 @@ def age_SC002() -> list[str]:
     src, problems = index_html(), []
     if "2003" in src:
         problems.append("index.html still contains 2003")
-    if "I'll include Nokia" in src:
-        problems.append("the leftover developer comment (I'll include Nokia and Ericsson) is still in index.html")
+    for part in ("Nokia/Ericsson/MSI", "Grouped for brevity", "I'll include Nokia"):
+        if part in src:
+            problems.append(f"part of the leftover developer comment ({part!r}) is still in index.html")
+    if any("Nokia" in c for c in re.findall(r"<!--.*?-->", src, re.S)):
+        problems.append("an HTML comment naming Nokia is still in index.html")
     root = Tree(src).root
     item = earlier_item(root)
     if item is None:
