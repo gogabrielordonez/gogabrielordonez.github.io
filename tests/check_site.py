@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # spec: 001-site-fixes-for-gabrielordonez-com
+# spec: 002-age-proofing
 """Checks for specs/001-site-fixes-for-gabrielordonez-com, one per task.
 
 Written from spec.md before the pages were changed, so a tick has something
@@ -16,11 +17,13 @@ files have to back. Unticked tasks print as pending. Standard library only.
 
 from __future__ import annotations
 
+import difflib
 import json
 import re
 import struct
 import subprocess
 import sys
+import unicodedata
 import urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
@@ -350,6 +353,221 @@ def check_T013() -> list[str] | None:
 CHECKS = {name[len("check_"):]: f for name, f in sorted(globals().items()) if name.startswith("check_T")}
 
 
+# --- spec 002-age-proofing: checks on index.html, one per success criterion ---
+# Named age_*, not check_T###, so they stay out of CHECKS and spec 001's
+# finish line (T012) is not turned red by them.
+
+TASKS2 = ROOT / "specs" / "002-age-proofing" / "tasks.md"
+BASELINE = "8e70efe"
+VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
+YEAR = re.compile(r"\b\d{4}\b")
+
+
+class Node:
+    def __init__(self, tag: str, start: int):
+        self.tag, self.start, self.end = tag, start, start
+        self.kids: list = []
+
+    @property
+    def text(self) -> str:
+        parts = [k if isinstance(k, str) else k.text for k in self.kids]
+        return unicodedata.normalize("NFC", " ".join(" ".join(parts).split()))
+
+
+class Tree(HTMLParser):
+    """index.html as nested elements, each knowing its first and last line."""
+
+    def __init__(self, source: str):
+        super().__init__()
+        self.root = Node("#root", 1)
+        self.stack = [self.root]
+        self.feed(source)
+        self.close()
+        self.root.end = source.count("\n") + 1
+
+    def handle_starttag(self, tag, attrs):
+        n = Node(tag, self.getpos()[0])
+        self.stack[-1].kids.append(n)
+        if tag not in VOID:
+            self.stack.append(n)
+
+    def handle_endtag(self, tag):
+        if any(n.tag == tag for n in self.stack[1:]):
+            while True:
+                n = self.stack.pop()
+                n.end = self.getpos()[0]
+                if n.tag == tag:
+                    break
+
+    def handle_data(self, data):
+        self.stack[-1].kids.append(data)
+
+
+def path_to(node: Node, needle: str) -> list[Node]:
+    """Root-to-deepest chain of elements whose text contains `needle`."""
+    chain = [node]
+    while True:
+        nxt = next((k for k in chain[-1].kids if isinstance(k, Node) and re.search(needle, k.text)), None)
+        if nxt is None:
+            return chain if re.search(needle, node.text) else []
+        chain.append(nxt)
+
+
+def grow(chain: list[Node], stop) -> Node:
+    """The largest element on the chain that `stop` does not reject."""
+    best = chain[-1]
+    for anc in reversed(chain[:-1]):
+        if anc.tag in ("body", "html", "#root") or stop(anc.text):
+            break
+        best = anc
+    return best
+
+
+def education_entry(root: Node, inst: str, other: str) -> Node | None:
+    chain = path_to(root, re.escape(inst))
+    return grow(chain, lambda t: other in t or "Bachelor" in t) if chain else None
+
+
+def earlier_item(root: Node) -> Node | None:
+    """The item headed 'Earlier Career': grown until it would take in a dated item."""
+    chain = path_to(root, r"Earlier Career")
+    return grow(chain, lambda t: re.search(r"\b(19|20)\d\d\b", t)) if chain else None
+
+
+def old_item(root: Node) -> Node | None:
+    """The baseline's '2003 – 2013' item: grown until it would take in another year."""
+    rng = r"2003\s*[–-]\s*2013"
+    chain = path_to(root, rng)
+    return grow(chain, lambda t: re.search(r"\b(19|20)\d\d\b", re.sub(rng, "", t))) if chain else None
+
+
+def index_html() -> str:
+    return (ROOT / "index.html").read_text(encoding="utf-8")
+
+
+def age_SC001() -> list[str]:
+    """FR-001 SC-001: neither the Barcelona nor the Canada West Education entry
+    in index.html carries a four-digit year; both still name degree and institution."""
+    root, problems = Tree(index_html()).root, []
+    for inst, other, degree in (
+        ("University of Barcelona", "University Canada West", r"\bM\.?S\.?c?\b|Master"),
+        ("University Canada West", "University of Barcelona", r"\bMBA\b|Master of Business"),
+    ):
+        e = education_entry(root, inst, other)
+        if e is None:
+            problems.append(f"index.html has no Education entry naming {inst}")
+            continue
+        if not re.search(degree, e.text):
+            problems.append(f"the {inst} entry no longer names its degree: {e.text!r}")
+        if YEAR.search(e.text):
+            problems.append(f"the {inst} entry still carries a year: {e.text!r}")
+    return problems
+
+
+def age_SC002() -> list[str]:
+    """FR-002 FR-003 FR-005 SC-002: index.html has no 2003; an undated item headed
+    Earlier Career names Ericsson, MSI Americas, Telefónica and both resume roles;
+    the leftover developer comment is gone."""
+    src, problems = index_html(), []
+    if "2003" in src:
+        problems.append("index.html still contains 2003")
+    for part in ("Nokia/Ericsson/MSI", "Grouped for brevity", "I'll include Nokia"):
+        if part in src:
+            problems.append(f"part of the leftover developer comment ({part!r}) is still in index.html")
+    if any("Nokia" in c for c in re.findall(r"<!--.*?-->", src, re.S)):
+        problems.append("an HTML comment naming Nokia is still in index.html")
+    root = Tree(src).root
+    item = earlier_item(root)
+    if item is None:
+        return problems + ["index.html has no item headed Earlier Career"]
+    if not any(isinstance(k, str) and k.strip() == "Earlier Career" for n in [item, *_walk(item)] for k in n.kids):
+        problems.append("no element of the item has Earlier Career as its whole heading text")
+    t = item.text.replace("&amp;", "&")
+    if YEAR.search(t):
+        problems.append(f"the Earlier Career item carries a year: {t!r}")
+    for want in ("Ericsson", "MSI Americas", "Telefónica", "Solutions Architect & Project Lead", "RF Engineering"):
+        if unicodedata.normalize("NFC", want) not in t:
+            problems.append(f"the Earlier Career item does not name {want!r}")
+    return problems
+
+
+def _walk(node: Node):
+    for k in node.kids:
+        if isinstance(k, Node):
+            yield k
+            yield from _walk(k)
+
+
+def age_SC003() -> list[str]:
+    """FR-004 FR-005 SC-003: outside the Barcelona and Canada West Education entries,
+    the Earlier Career item and the removed comment, index.html equals index.html at
+    8e70efe (blank lines and trailing spaces aside)."""
+    shown = subprocess.run(
+        ["git", "show", f"{BASELINE}:index.html"], cwd=ROOT, capture_output=True, text=True, check=False
+    )
+    if shown.returncode:
+        return [f"cannot read index.html at {BASELINE}: {shown.stderr.strip()}"]
+    base_src = shown.stdout
+    base_root = Tree(base_src).root
+    lines = base_src.splitlines()
+    allowed: set[int] = set()  # 1-based baseline lines
+    problems = []
+    for inst, other in (("University of Barcelona", "University Canada West"), ("University Canada West", "University of Barcelona")):
+        e = education_entry(base_root, inst, other)
+        if e:
+            allowed |= set(range(e.start, e.end + 1))
+        else:
+            problems.append(f"baseline has no Education entry naming {inst}")
+    old = old_item(base_root)
+    if old:
+        allowed |= set(range(old.start, old.end + 1))
+    else:
+        problems.append("baseline has no 2003 – 2013 item")
+    hit = next((i for i, l in enumerate(lines, 1) if "I'll include Nokia" in l), None)
+    if hit:
+        a = max(i for i in range(1, hit + 1) if "<!--" in lines[i - 1])
+        b = min(i for i in range(hit, len(lines) + 1) if "-->" in lines[i - 1])
+        # FR-005 is the whole run of comments, e.g. a one-line comment right above
+        # the multi-line one: take every directly preceding one-line comment too.
+        while a > 1 and (not lines[a - 2].strip() or re.fullmatch(r"\s*<!--.*-->\s*", lines[a - 2])):
+            a -= 1
+        allowed |= set(range(a, b + 1))
+    else:
+        problems.append("baseline has no leftover developer comment")
+    if problems:
+        return problems
+
+    def kept(src_lines):
+        return [(n, l.rstrip()) for n, l in enumerate(src_lines, 1) if l.strip()]
+
+    base, now = kept(lines), kept(index_html().splitlines())
+    sm = difflib.SequenceMatcher(None, [t for _, t in base], [t for _, t in now], autojunk=False)
+    for op, i1, i2, j1, j2 in sm.get_opcodes():
+        if op == "equal":
+            continue
+        if i1 == i2:  # pure insertion: must sit beside an allowed line
+            near = {base[i1 - 1][0]} if i1 else set()
+            near |= {base[i1][0]} if i1 < len(base) else set()
+            if not near & allowed:
+                problems.append(f"lines added outside the allowed places after baseline line {sorted(near)}: {now[j1][1].strip()[:80]!r}")
+        else:
+            bad = [n for n, _ in base[i1:i2] if n not in allowed]
+            if bad:
+                problems.append(f"baseline line {bad[0]} changed outside the allowed places: {lines[bad[0] - 1].strip()[:80]!r}")
+    return problems
+
+
+AGE_CHECKS = {"SC-001": age_SC001, "SC-002": age_SC002, "SC-003": age_SC003}
+
+
+def age_ticked() -> bool:
+    """Spec 002's T002 (the edit) is ticked: from then the checks are a claim to back."""
+    try:
+        return bool(re.search(r"^\s*- \[[xX]\] T002\b", TASKS2.read_text(encoding="utf-8"), re.M))
+    except OSError:
+        return False
+
+
 def ticked() -> set[str]:
     text = TASKS.read_text(encoding="utf-8")
     return set(re.findall(r"^\s*- \[[xX]\] (T\d+)\b", text, re.M))
@@ -375,6 +593,17 @@ def main(argv: list[str]) -> int:
             print(f"FAIL     {tid} {frs}: " + "; ".join(problems))
         else:
             print(f"pending  {tid} {frs}: " + "; ".join(problems))
+    claimed = every or age_ticked()
+    for sid, check in AGE_CHECKS.items():
+        problems = check()
+        print(f"test {sid} ... {'ok' if not problems else 'FAILED'}")
+        if not problems:
+            print(f"PASS     {sid}")
+        elif claimed:
+            failed += 1
+            print(f"FAIL     {sid} (spec 002): " + "; ".join(problems))
+        else:
+            print(f"pending  {sid} (spec 002): " + "; ".join(problems))
     unknown = sorted(done - set(CHECKS))
     if unknown:
         failed += 1
